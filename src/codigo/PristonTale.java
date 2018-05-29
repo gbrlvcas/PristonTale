@@ -8,7 +8,7 @@ public class PristonTale {
 		
 		//Instanciando [Package: interfaceGrafica / Classe: IG_Login]
 		IG_Login lgn = new IG_Login();
-		lgn.setVisible(true);
+		lgn.setVisible(true);//
 
 	}
 

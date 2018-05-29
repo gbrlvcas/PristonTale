@@ -31,5 +31,5 @@ public class Usuarios {
 	
 	
 	//ArrayList
-	public static ArrayList<Usuarios> dados = new ArrayList<>();
+	public static ArrayList<Usuarios> dados = new ArrayList<>();//
 }
