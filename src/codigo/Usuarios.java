@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class Usuarios {
 
+	//Informações sobre o poder de acesso
+	//Poder acesso = 0 : ADM
+	//Poder acesso = 1 : GM
+	//Poder acesso = 2 : Player
+	
+	
 	//Atributos
 	private String usuario;
 	private String senha;

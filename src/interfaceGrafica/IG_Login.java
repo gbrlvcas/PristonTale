@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -19,11 +20,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import codigo.Acao;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 public class IG_Login extends JFrame {
 
 	private JPanel pnlLogin;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField txtUsuario;
+	private JPasswordField txtSenha;
 
 	//JFrame - Janela do login
 	public IG_Login() {
@@ -47,6 +53,12 @@ public class IG_Login extends JFrame {
 	
 //Componentes =======================================================================================================================
 		
+		//Instanciando [Classe: Acao]
+		Acao a = new Acao();
+			
+			//Instanciando [Classe: Acao / Método: usuarioADM]
+			a.usuarioADM();
+		
 		//Login
 		JLabel lblLogin = new JLabel("USUARIO");
 		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
@@ -57,10 +69,10 @@ public class IG_Login extends JFrame {
 		lblLogin.setBounds(159, 74, 85, 28);
 		pnlLogin.add(lblLogin);
 		
-		textField = new JTextField();
-		textField.setBounds(126, 109, 150, 25);
-		pnlLogin.add(textField);
-		textField.setColumns(10);
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(126, 109, 150, 25);
+		pnlLogin.add(txtUsuario);
+		txtUsuario.setColumns(10);
 		
 		//Senha
 		JLabel lblSenha = new JLabel("SENHA");
@@ -72,19 +84,59 @@ public class IG_Login extends JFrame {
 		lblSenha.setBounds(168, 145, 67, 28);
 		pnlLogin.add(lblSenha);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(126, 180, 150, 25);
-		pnlLogin.add(passwordField);
+		txtSenha = new JPasswordField();
+		txtSenha.setBounds(126, 180, 150, 25);
+		pnlLogin.add(txtSenha);
 		
 		//Botão
 		JButton btnNewButton = new JButton("LOGIN");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			
+			//Função botão [Clique / Logar]
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				//Pegar o texto digitado
+				String usuario = txtUsuario.getText().toString();
+				String senha = new String(txtSenha.getPassword());
+				
+				//Instanciando método [Package: Codigo / Classe: Acao /Método: validaUsuario]
+				a.validaUsuario(usuario, senha);
+				
+				
+				
+				
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton.setBounds(155, 231, 93, 36);
 		pnlLogin.add(btnNewButton);
 		
 		JLabel lblVerso = new JLabel("Vers\u00E3o 1.0");
-		lblVerso.setBounds(315, 287, 58, 14);
+		lblVerso.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblVerso.setBounds(173, 286, 57, 14);
 		pnlLogin.add(lblVerso);
+		
+		JLabel lblNovoUsuario = new JLabel("Criar conta");
+		lblNovoUsuario.setForeground(Color.WHITE);
+		lblNovoUsuario.addMouseListener(new MouseAdapter() {
+			
+			//Função Label [Clique / Cadastrar] 
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Funcionou");
+			}
+		});
+		lblNovoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNovoUsuario.setBounds(10, 277, 67, 14);
+		pnlLogin.add(lblNovoUsuario);
+		
+		JLabel lblRecuperarSenha = new JLabel("Esqueci a senha");
+		lblRecuperarSenha.setForeground(Color.WHITE);
+		lblRecuperarSenha.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblRecuperarSenha.setBounds(300, 277, 93, 14);
+		pnlLogin.add(lblRecuperarSenha);
 		
 		//Background
 		JLabel lblBackground = new JLabel("");
