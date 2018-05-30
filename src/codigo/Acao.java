@@ -17,12 +17,11 @@ public class Acao {
 		//Criando o usuario ADM
 		usu.setUsuario("admin");
 		usu.setSenha("admin");
-		usu.setPoderAcesso("0");
+		usu.setPoderAcesso(0);
 
-		
 		//Adicionando ao ArrayList
 		Usuarios.dados.add(usu);
-		
+	
 	}
 	
 	//Método - Validando os usuarios
@@ -39,18 +38,18 @@ public class Acao {
 				if(senha.equals(Usuarios.dados.get(validador).getSenha())) {
 					
 						//Verificando o poder de acesso [Administrador]
-					if(Integer.parseInt(Usuarios.dados.get(validador).getPoderAcesso()) == 0) {
+					if(Usuarios.dados.get(validador).getPoderAcesso() == 0) {
 						
 						IG_Principal_ADM adm = new IG_Principal_ADM();
 						adm.setVisible(true);
 						
 					
 						//Verificando o poder de acesso [GM]
-					}else if(Integer.parseInt(Usuarios.dados.get(validador).getPoderAcesso()) == 1) {
+					}else if(Usuarios.dados.get(validador).getPoderAcesso() == 1) {
 						JOptionPane.showMessageDialog(null, "GM Logado");
 						
 						//Verificando o poder de acesso [Player]
-					}else if(Integer.parseInt(Usuarios.dados.get(validador).getPoderAcesso()) == 2) {
+					}else if(Usuarios.dados.get(validador).getPoderAcesso() == 2) {
 						JOptionPane.showMessageDialog(null, "Player Logado");
 						
 					}

@@ -18,7 +18,7 @@ public class Usuarios {
 	private String estado;
 	private String cidade;
 	private String email;
-	private String poderAcesso;
+	private int poderAcesso;
 	
 	//Métodos magicos
 	public String getUsuario() {
@@ -33,10 +33,10 @@ public class Usuarios {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getPoderAcesso() {
+	public int getPoderAcesso() {
 		return poderAcesso;
 	}
-	public void setPoderAcesso(String poderAcesso) {
+	public void setPoderAcesso(int poderAcesso) {
 		this.poderAcesso = poderAcesso;
 	}
 	

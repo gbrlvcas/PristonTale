@@ -35,7 +35,8 @@ public class IG_Login extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtSenha;
 
-	//JFrame - Janela do login
+//JFrame - Janela do login =========================================================================================================
+	
 	public IG_Login() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,13 +96,17 @@ public class IG_Login extends JFrame {
 		txtSenha.setBounds(126, 180, 150, 25);
 		pnlLogin.add(txtSenha);
 		
-		//Botão
+		
+		//Botão [Login]
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.setBackground(Color.DARK_GRAY);
 		btnLogin.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnLogin.setForeground(Color.WHITE);
+		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnLogin.setBounds(155, 231, 93, 36);
+		pnlLogin.add(btnLogin);
 		
-		
+		//Ação do botão [Login]
 		btnLogin.addMouseListener(new MouseAdapter() {
 			
 			//Função botão [Clique / Logar]
@@ -136,11 +141,17 @@ public class IG_Login extends JFrame {
 			
 		});
 				
-		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnLogin.setBounds(155, 231, 93, 36);
-		pnlLogin.add(btnLogin);
 		
+		//Botão [Sair]
 		JButton btnSair = new JButton("SAIR");
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnSair.setBackground(Color.DARK_GRAY);
+		btnSair.setBounds(324, 11, 67, 28);
+		pnlLogin.add(btnSair);
+		
+		//Ação do botão [Sair]
 		btnSair.addMouseListener(new MouseAdapter() {
 			
 			//Função Botão [Clique / Sair]
@@ -165,44 +176,86 @@ public class IG_Login extends JFrame {
 				
 			}
 			
-			
-			
-			
 		});
-		btnSair.setForeground(Color.WHITE);
-		btnSair.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnSair.setBackground(Color.DARK_GRAY);
-		btnSair.setBounds(324, 11, 67, 28);
-		pnlLogin.add(btnSair);
 		
+		
+		//Informação sobre a versão atual do sistema
 		JLabel lblVerso = new JLabel("Vers\u00E3o 1.0");
 		lblVerso.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblVerso.setBounds(173, 286, 57, 14);
 		pnlLogin.add(lblVerso);
 		
+		//JLabel [Cadastrar nova conta]
 		JLabel lblNovoUsuario = new JLabel("Criar conta");
 		lblNovoUsuario.setForeground(Color.WHITE);
+		lblNovoUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNovoUsuario.setBounds(29, 264, 77, 18);
+		pnlLogin.add(lblNovoUsuario);
+		
+		//Função Label [Clique / Cadastrar] 
 		lblNovoUsuario.addMouseListener(new MouseAdapter() {
 			
-			//Função Label [Clique / Cadastrar] 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Funcionou");
+				
+				//Instanciando [Classe: IG_Cadastrar]
+				IG_Cadastrar cds = new IG_Cadastrar();
+				cds.setVisible(true);
+				dispose();
 			
+			}
+			
+			//Função Botão [Passar por cima / Aumentar fonte]
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+			lblNovoUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+			
+			}
+			
+			//Função Botão [Sair de cima / Diminuir fonte]
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+			lblNovoUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
 			}
 		});
 		
 		
-		lblNovoUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNovoUsuario.setBounds(29, 265, 67, 13);
-		pnlLogin.add(lblNovoUsuario);
-		
+		//JLabel [Recuperar senha]
 		JLabel lblRecuperarSenha = new JLabel("Esqueci a senha");
 		lblRecuperarSenha.setForeground(Color.WHITE);
 		lblRecuperarSenha.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblRecuperarSenha.setBounds(278, 264, 102, 14);
+		lblRecuperarSenha.setBounds(268, 264, 112, 18);
 		pnlLogin.add(lblRecuperarSenha);
+		
+		//Ação do botão [Recuperar senha]
+		lblRecuperarSenha.addMouseListener(new MouseAdapter() {
+			
+			//Função Label [Clique / Cadastrar]
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				//Instanciando [Classe: IG_Cadastrar]
+				IG_Cadastrar cds = new IG_Cadastrar();
+				cds.setVisible(true);
+				dispose();
+			
+			}
+			
+			
+			//Função Botão [Passar por cima / Aumentar fonte]
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+			lblRecuperarSenha.setFont(new Font("Tahoma", Font.BOLD, 13));
+			
+			}
+			
+			//Função Botão [Sair de cima / Diminuir fonte]
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+			lblRecuperarSenha.setFont(new Font("Tahoma", Font.BOLD, 12));
+			}
+			
+		});
 		
 		//Background
 		JLabel lblBackground = new JLabel("");
