@@ -23,9 +23,8 @@ public class IG_Principal_ADM extends JFrame {
 
 	private JPanel pnlADM;
 
-
-
-	
+//JFrame - Janela do ADM ===========================================================================================================
+		
 	public IG_Principal_ADM() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +35,27 @@ public class IG_Principal_ADM extends JFrame {
 		setLocationRelativeTo(null);
 		pnlADM.setLayout(null);
 		
+//Imagem do cursor ==================================================================================================================
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+	    Image image = toolkit.getImage(getClass().getResource("/PT_Mouse.png"));
+		Point hotspot = new Point(0,0);
+	    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_Mouse");
+		setCursor(cursor);
+				
+			
+//Componentes =======================================================================================================================
+		
+		//Botão [Sair]
 		JButton btnSair = new JButton("SAIR");
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnSair.setBackground(Color.DARK_GRAY);
+		btnSair.setBounds(10, 434, 99, 43);
+		pnlADM.add(btnSair);
+		
+		//Ação do botão [Sair]
 		btnSair.addMouseListener(new MouseAdapter() {
 			
 			//Função Botão [Clique / Sair]
@@ -64,32 +83,12 @@ public class IG_Principal_ADM extends JFrame {
 			
 		});
 			
-		btnSair.setForeground(Color.WHITE);
-		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnSair.setBackground(Color.DARK_GRAY);
-		btnSair.setBounds(10, 434, 99, 43);
-		pnlADM.add(btnSair);
-		
+
+		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\104969\\Desktop\\Trabalho Programador\\20-Sistema-PristonTale\\resources\\BG_Principal.jpg"));
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Principal.jpg")));
 		lblBackground.setBounds(0, 0, 668, 500);
 		pnlADM.add(lblBackground);
 		
-//Imagem do cursor ==================================================================================================================
-		
-			Toolkit toolkit = Toolkit.getDefaultToolkit();
-			Image image = toolkit.getImage(getClass().getResource("/PT_Mouse.png"));
-			Point hotspot = new Point(0,0);
-		    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_Mouse");
-		    setCursor(cursor);		
-		    
-//Componentes =======================================================================================================================
-		    
-		    
-		    
-		    
-		    
-		    
 	}
 }
