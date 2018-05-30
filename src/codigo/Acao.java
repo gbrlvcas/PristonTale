@@ -2,6 +2,9 @@ package codigo;
 
 import javax.swing.JOptionPane;
 
+import interfaceGrafica.IG_Login;
+import interfaceGrafica.IG_Principal_ADM;
+
 public class Acao {
 
 	
@@ -37,8 +40,11 @@ public class Acao {
 					
 						//Verificando o poder de acesso [Administrador]
 					if(Integer.parseInt(Usuarios.dados.get(validador).getPoderAcesso()) == 0) {
-						JOptionPane.showMessageDialog(null, "Admin Logado");
 						
+						IG_Principal_ADM adm = new IG_Principal_ADM();
+						adm.setVisible(true);
+						
+					
 						//Verificando o poder de acesso [GM]
 					}else if(Integer.parseInt(Usuarios.dados.get(validador).getPoderAcesso()) == 1) {
 						JOptionPane.showMessageDialog(null, "GM Logado");

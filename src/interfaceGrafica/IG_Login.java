@@ -24,6 +24,10 @@ import codigo.Acao;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
 
 public class IG_Login extends JFrame {
 
@@ -33,8 +37,9 @@ public class IG_Login extends JFrame {
 
 	//JFrame - Janela do login
 	public IG_Login() {
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 419, 340);
+		setBounds(100, 100, 401, 300);
 		pnlLogin = new JPanel();
 		pnlLogin.setBounds(new Rectangle(0, 0, 400, 300));
 		pnlLogin.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,6 +75,7 @@ public class IG_Login extends JFrame {
 		pnlLogin.add(lblLogin);
 		
 		txtUsuario = new JTextField();
+		txtUsuario.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		txtUsuario.setBounds(126, 109, 150, 25);
 		pnlLogin.add(txtUsuario);
 		txtUsuario.setColumns(10);
@@ -85,12 +91,18 @@ public class IG_Login extends JFrame {
 		pnlLogin.add(lblSenha);
 		
 		txtSenha = new JPasswordField();
+		txtSenha.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		txtSenha.setBounds(126, 180, 150, 25);
 		pnlLogin.add(txtSenha);
 		
 		//Botão
-		JButton btnNewButton = new JButton("LOGIN");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setBackground(Color.DARK_GRAY);
+		btnLogin.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnLogin.setForeground(Color.WHITE);
+		
+		
+		btnLogin.addMouseListener(new MouseAdapter() {
 			
 			//Função botão [Clique / Logar]
 			@Override
@@ -102,16 +114,67 @@ public class IG_Login extends JFrame {
 				
 				//Instanciando método [Package: Codigo / Classe: Acao /Método: validaUsuario]
 				a.validaUsuario(usuario, senha);
-				
-				
-				
-				
+				dispose();
 				
 			}
+			
+			//Função Botão [Passar por cima / Mudar cor]
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnLogin.setBackground(Color.WHITE);
+				btnLogin.setForeground(Color.DARK_GRAY);
+				
+			}
+			
+			//Função Botão [Sair de cima / Mudar cor]
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnLogin.setBackground(Color.DARK_GRAY);
+				btnLogin.setForeground(Color.WHITE);
+				
+			}
+			
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnNewButton.setBounds(155, 231, 93, 36);
-		pnlLogin.add(btnNewButton);
+				
+		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnLogin.setBounds(155, 231, 93, 36);
+		pnlLogin.add(btnLogin);
+		
+		JButton btnSair = new JButton("SAIR");
+		btnSair.addMouseListener(new MouseAdapter() {
+			
+			//Função Botão [Clique / Sair]
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+			}
+			
+			//Função Botão [Passar por cima / Mudar cor]
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnSair.setBackground(Color.WHITE);
+				btnSair.setForeground(Color.DARK_GRAY);
+				
+			}
+			
+			//Função Botão [Sair de cima / Mudar cor]
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnSair.setBackground(Color.DARK_GRAY);
+				btnSair.setForeground(Color.WHITE);
+				
+			}
+			
+			
+			
+			
+		});
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnSair.setBackground(Color.DARK_GRAY);
+		btnSair.setBounds(324, 11, 67, 28);
+		pnlLogin.add(btnSair);
 		
 		JLabel lblVerso = new JLabel("Vers\u00E3o 1.0");
 		lblVerso.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -126,20 +189,24 @@ public class IG_Login extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Funcionou");
+			
 			}
 		});
-		lblNovoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNovoUsuario.setBounds(10, 277, 67, 14);
+		
+		
+		lblNovoUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNovoUsuario.setBounds(29, 265, 67, 13);
 		pnlLogin.add(lblNovoUsuario);
 		
 		JLabel lblRecuperarSenha = new JLabel("Esqueci a senha");
 		lblRecuperarSenha.setForeground(Color.WHITE);
-		lblRecuperarSenha.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblRecuperarSenha.setBounds(300, 277, 93, 14);
+		lblRecuperarSenha.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblRecuperarSenha.setBounds(278, 264, 102, 14);
 		pnlLogin.add(lblRecuperarSenha);
 		
 		//Background
 		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Login.jpg")));
 		lblBackground.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		lblBackground.setBounds(0, 0, 400, 300);
 		lblBackground.setCursor(cursor);
