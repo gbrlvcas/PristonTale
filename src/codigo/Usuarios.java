@@ -13,6 +13,11 @@ public class Usuarios {
 	//Atributos
 	private String usuario;
 	private String senha;
+	private String nome;
+	private String dataNascimento;
+	private String estado;
+	private String cidade;
+	private String email;
 	private String poderAcesso;
 	
 	//Métodos magicos
