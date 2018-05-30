@@ -77,9 +77,8 @@ public class IG_Principal_ADM extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				btnSair.setBackground(Color.DARK_GRAY);
 				btnSair.setForeground(Color.WHITE);
-				
+	
 			}
-			
 			
 		});
 			
