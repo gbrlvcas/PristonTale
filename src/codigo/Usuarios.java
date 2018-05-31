@@ -14,13 +14,15 @@ public class Usuarios {
 	private String usuario;
 	private String senha;
 	private String nome;
+	private String sobrenome;
 	private String dataNascimento;
-	private String estado;
-	private String cidade;
 	private String email;
 	private int poderAcesso;
+	private int chaveAcesso;
 	
-	//Métodos magicos
+	
+	
+//Métodos mágicos
 	public String getUsuario() {
 		return usuario;
 	}
@@ -33,14 +35,46 @@ public class Usuarios {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getSobrenome() {
+		return sobrenome;
+	}
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getPoderAcesso() {
 		return poderAcesso;
 	}
 	public void setPoderAcesso(int poderAcesso) {
 		this.poderAcesso = poderAcesso;
 	}
-	
-	
+	public int getChaveAcesso() {
+		return chaveAcesso;
+	}
+	public void setChaveAcesso(int chaveAcesso) {
+		this.chaveAcesso = chaveAcesso;
+	}
+
+
+
+
 	//ArrayList
 	public static ArrayList<Usuarios> dados = new ArrayList<>();//
 }

@@ -7,27 +7,24 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 import codigo.Acao;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
+import codigo.Usuarios;
 
 public class IG_Login extends JFrame {
 
@@ -63,7 +60,11 @@ public class IG_Login extends JFrame {
 		Acao a = new Acao();
 			
 			//Instanciando [Classe: Acao / Método: usuarioADM]
-			a.usuarioADM();
+			if(Usuarios.dados.isEmpty()) {
+				a.usuarioADM();
+		
+		}
+			
 		
 		//Login
 		JLabel lblLogin = new JLabel("USUARIO");
@@ -111,33 +112,43 @@ public class IG_Login extends JFrame {
 			
 			//Função botão [Clique / Logar]
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				
-				//Pegar o texto digitado
+				//Pegar os dados digitados
 				String usuario = txtUsuario.getText().toString();
 				String senha = new String(txtSenha.getPassword());
 				
 				//Instanciando método [Package: Codigo / Classe: Acao /Método: validaUsuario]
-				a.validaUsuario(usuario, senha);
-				dispose();
+				a.validaLogin(usuario, senha);
 				
-			}
+				//Condicional
+				if(a.erroLogin == 1) {
+					
+					//Instanciando [Classe:IG_Erros]
+					IG_Erros erros = new IG_Erros();
+					erros.setVisible(true);
+					
+					}
+
+				}
 			
-			//Função Botão [Passar por cima / Mudar cor]
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnLogin.setBackground(Color.WHITE);
-				btnLogin.setForeground(Color.DARK_GRAY);
+				//Função Botão [Passar por cima / Mudar cor]
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					btnLogin.setBackground(Color.WHITE);
+					btnLogin.setForeground(Color.DARK_GRAY);
+					
+				}
 				
-			}
-			
-			//Função Botão [Sair de cima / Mudar cor]
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnLogin.setBackground(Color.DARK_GRAY);
-				btnLogin.setForeground(Color.WHITE);
+				//Função Botão [Sair de cima / Mudar cor]
+				@Override
+				public void mouseExited(MouseEvent e) {
+					btnLogin.setBackground(Color.DARK_GRAY);
+					btnLogin.setForeground(Color.WHITE);
+					
+				}
 				
-			}
+				
 			
 		});
 				
@@ -199,7 +210,7 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Cadastrar cds = new IG_Cadastrar();
+				IG_Cadastrar_Usuario cds = new IG_Cadastrar_Usuario();
 				cds.setVisible(true);
 				dispose();
 			
@@ -235,7 +246,7 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Cadastrar cds = new IG_Cadastrar();
+				IG_Cadastrar_Usuario cds = new IG_Cadastrar_Usuario();
 				cds.setVisible(true);
 				dispose();
 			
