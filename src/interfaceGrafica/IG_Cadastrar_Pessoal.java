@@ -28,6 +28,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import codigo.Acao;
+import codigo.Usuarios;
 
 public class IG_Cadastrar_Pessoal extends JFrame {
 
@@ -37,13 +38,6 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 	private JTextField txtEmailUsuario;
 	private JTextField txtSobrenomeUsuario;
 	
-	//Atributos
-	public static String nomeUsuario;
-	public static String sobrenomeUsuario;
-	public static String datanascimentoUsuario;
-	public static String emailUsuario;
-	public static boolean termoSelecionado;
-
 	//JFrame - Janela do cadastro [Usuario] =========================================================================================================
 	
 	public IG_Cadastrar_Pessoal() {
@@ -243,34 +237,26 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				//Instanciando [Package: Codigo / Classe: Usuarios]
+				Usuarios u = new Usuarios();
+				
 				//Pegar os dados digitados
-				nomeUsuario = txtNomeUsuario.getText().toString();
-				sobrenomeUsuario = txtSobrenomeUsuario.getText().toString();
-				datanascimentoUsuario = txtDataNascimento.getText().toString();
-				emailUsuario = txtEmailUsuario.getText().toString();
-				termoSelecionado = true;
+				u.setNome(txtNomeUsuario.getText().toString());
+				u.setSobrenome(txtSobrenomeUsuario.getText().toString());
+				u.setDataNascimento(txtDataNascimento.getText().toString());
+				u.setEmail(txtEmailUsuario.getText().toString());
+				
+				//Verificar se o termo foi selecionado
+				boolean termoSelecionado = true;
+					if(!chkTermos.isSelected()) {
+						termoSelecionado = false;
+					}
+						
+				
+				//Instanciando [Package:Codigo / Classe:Usuarios / Método: ]
+				u.verificaPessoal(termoSelecionado);
 				
 
-				if(!chkTermos.isSelected()) {
-					termoSelecionado = false;
-				}
-					
-				
-				//Instanciando [Package:Codigo / Classe: Acao]
-				Acao a = new Acao();
-				a.validarDadosPessoais();
-				
-				//Condicional
-				if(a.erroCadastro == 1 || a.erroCadastro == 2){
-					IG_Erros erros = new IG_Erros();
-					erros.setVisible(true);
-					
-					
-				}else if(a.erroCadastro == 0) {
-					
-					//Parametrizar as variaveis para cadastra-las
-					a.cadastraPlayer();
-				}
 			}
 			
 			//Função Botão [Passar por cima / Mudar cor]

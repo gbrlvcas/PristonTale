@@ -270,7 +270,7 @@ public class IG_Login extends JFrame {
 		
 		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Login.jpg")));
+		//lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Login.jpg")));
 		lblBackground.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		lblBackground.setBounds(0, 0, 400, 300);
 		lblBackground.setCursor(cursor);

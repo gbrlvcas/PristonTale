@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -23,7 +24,6 @@ import javax.swing.border.LineBorder;
 
 import codigo.Acao;
 import codigo.Usuarios;
-import javax.swing.JPasswordField;
 
 public class IG_Cadastrar_Usuario extends JFrame {
 
@@ -58,9 +58,7 @@ public class IG_Cadastrar_Usuario extends JFrame {
 			
 //Componentes =======================================================================================================================
 		
-		//Instanciando [Package: Codigo / Classe: Acao]
-		Acao a = new Acao();
-		
+
 		//Informações sobre os campos abaixo [Cadastro dos dados da conta]
 		JLabel lblDadosConta = new JLabel("Criando nova conta no Priston Tale");
 		lblDadosConta.setBounds(10, 131, 430, 24);
@@ -111,17 +109,18 @@ public class IG_Cadastrar_Usuario extends JFrame {
 				//Capturando o ID digitado
 				String idDisponivel = txtNovoLogin.getText().toString().toLowerCase();
 					
-				//Instanciando [Package: Codigo / Classe: Acao]
-				a.idDisponivel(idDisponivel);
+				//Instanciando [Package: Codigo / Classe: Usuario]
+				Usuarios u = new Usuarios();
+				u.verificaID(idDisponivel);
 				
 				//Condicional
-				if(a.idDisponivel(idDisponivel) == true) {
+				if(u.verificaID(idDisponivel) == true) {
 					
-					lblMostrarDisponibilidade.setIcon(new ImageIcon(getClass().getResource("/ICN_Erro.png")));
+					lblMostrarDisponibilidade.setIcon(new ImageIcon(getClass().getResource("/ICN_Positivo.png")));
 					
 				}else {
 					
-					lblMostrarDisponibilidade.setIcon(new ImageIcon(getClass().getResource("/ICN_Correto.png")));
+					lblMostrarDisponibilidade.setIcon(new ImageIcon(getClass().getResource("/ICN_Negativo.png")));
 					
 					}
 			}
@@ -184,7 +183,7 @@ public class IG_Cadastrar_Usuario extends JFrame {
 		
 		//Cabeçalho
 		JLabel lblCabecalho = new JLabel("");
-		lblCabecalho.setIcon(new ImageIcon(getClass().getResource("/BG_Cadastrar.jpg")));
+		//lblCabecalho.setIcon(new ImageIcon(getClass().getResource("/BG_Cadastrar.jpg")));
 		lblCabecalho.setBounds(0, 0, 450, 126);
 		pnlCadastro.add(lblCabecalho);
 		
@@ -244,31 +243,17 @@ public class IG_Cadastrar_Usuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				//Instanciando [Package: Codigo / Classe: Acao]
+				Usuarios u = new Usuarios();
+				
 				//Pegar os dados digitados
-				novoUsuario = txtNovoLogin.getText().toString().toLowerCase();
-				novaSenha = new String(txtNovaSenha.getPassword());
-				confirmaSenha = new String(txtConfirmaSenha.getPassword());			
+				u.setUsuario(txtNovoLogin.getText().toString().toLowerCase());
+				u.setSenha(new String(txtNovaSenha.getPassword()));
+				u.setConfirmaSenha(new String(txtConfirmaSenha.getPassword()));			
 				
 				
 				//Instanciando [Package:Codigo / Classe: Acao]
-				a.validarUsuario();
-				
-				//Condicional
-				if(a.erroCadastro == 1 || a.erroCadastro == 2 || a.erroCadastro == 3) {
-					
-					//Instanciando [Classe:IG_Erros]
-					IG_Erros erros = new IG_Erros();
-					erros.setVisible(true);
-			
-				}else if(a.erroCadastro == 0) {
-					
-					//Pametrizando as variaveis para passar para o proximo Jframe
-					IG_Cadastrar_Pessoal ICP = new IG_Cadastrar_Pessoal();
-					ICP.setVisible(true);
-					dispose();
-					
-				}
-				
+				u.verificaUsuario();
 				
 			}
 			
