@@ -60,7 +60,7 @@ public class IG_Login extends JFrame {
 		Acao a = new Acao();
 			
 			//Instanciando [Classe: Acao / Método: usuarioADM]
-			if(Usuarios.dados.isEmpty()) {
+			if(MO_Usuarios.dados.isEmpty()) {
 				a.usuarioADM();
 		
 		}
@@ -210,7 +210,7 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Cadastrar_Usuario cds = new IG_Cadastrar_Usuario();
+				IG_Usuarios cds = new IG_Usuarios();
 				cds.setVisible(true);
 				dispose();
 			
@@ -246,7 +246,7 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Cadastrar_Usuario cds = new IG_Cadastrar_Usuario();
+				IG_Usuarios cds = new IG_Usuarios();
 				cds.setVisible(true);
 				dispose();
 			
@@ -270,7 +270,7 @@ public class IG_Login extends JFrame {
 		
 		//Background
 		JLabel lblBackground = new JLabel("");
-		//lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Login.jpg")));
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Login.jpg")));
 		lblBackground.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		lblBackground.setBounds(0, 0, 400, 300);
 		lblBackground.setCursor(cursor);

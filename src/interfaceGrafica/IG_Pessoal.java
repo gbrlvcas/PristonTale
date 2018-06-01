@@ -30,7 +30,7 @@ import javax.swing.text.MaskFormatter;
 import codigo.Acao;
 import codigo.Usuarios;
 
-public class IG_Cadastrar_Pessoal extends JFrame {
+public class IG_Pessoal extends JFrame {
 
 	private JPanel pnlCadastro;
 	private JTextField txtNomeUsuario;
@@ -40,7 +40,7 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 	
 	//JFrame - Janela do cadastro [Usuario] =========================================================================================================
 	
-	public IG_Cadastrar_Pessoal() {
+	public IG_Pessoal() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 519);
@@ -197,7 +197,7 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				IG_Cadastrar_Usuario ICU = new IG_Cadastrar_Usuario();
+				IG_Usuarios ICU = new IG_Usuarios();
 				ICU.setVisible(true);
 
 			}
@@ -238,7 +238,7 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//Instanciando [Package: Codigo / Classe: Usuarios]
-				Usuarios u = new Usuarios();
+				MO_Usuarios u = new MO_Usuarios();
 				
 				//Pegar os dados digitados
 				u.setNome(txtNomeUsuario.getText().toString());

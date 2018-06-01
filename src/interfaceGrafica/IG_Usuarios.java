@@ -24,8 +24,9 @@ import javax.swing.border.LineBorder;
 
 import codigo.Acao;
 import codigo.Usuarios;
+import modelo.Estatica;
 
-public class IG_Cadastrar_Usuario extends JFrame {
+public class IG_Usuarios extends JFrame {
 
 	private JPanel pnlCadastro;
 	private JTextField txtNovoLogin;
@@ -37,7 +38,7 @@ public class IG_Cadastrar_Usuario extends JFrame {
 	
 	//JFrame - Janela do cadastro =========================================================================================================
 	
-	public IG_Cadastrar_Usuario() {
+	public IG_Usuarios() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
@@ -110,7 +111,7 @@ public class IG_Cadastrar_Usuario extends JFrame {
 				String idDisponivel = txtNovoLogin.getText().toString().toLowerCase();
 					
 				//Instanciando [Package: Codigo / Classe: Usuario]
-				Usuarios u = new Usuarios();
+				MO_Usuarios u = new MO_Usuarios();
 				u.verificaID(idDisponivel);
 				
 				//Condicional
@@ -183,7 +184,7 @@ public class IG_Cadastrar_Usuario extends JFrame {
 		
 		//Cabeçalho
 		JLabel lblCabecalho = new JLabel("");
-		//lblCabecalho.setIcon(new ImageIcon(getClass().getResource("/BG_Cadastrar.jpg")));
+		lblCabecalho.setIcon(new ImageIcon(getClass().getResource("/BG_Cadastrar.jpg")));
 		lblCabecalho.setBounds(0, 0, 450, 126);
 		pnlCadastro.add(lblCabecalho);
 		
@@ -244,10 +245,10 @@ public class IG_Cadastrar_Usuario extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//Instanciando [Package: Codigo / Classe: Acao]
-				Usuarios u = new Usuarios();
+				MO_Usuarios u = new MO_Usuarios();
 				
 				//Pegar os dados digitados
-				u.setUsuario(txtNovoLogin.getText().toString().toLowerCase());
+				Estatica.novoUsuario = txtNovoLogin.getText().toString().toLowerCase();
 				u.setSenha(new String(txtNovaSenha.getPassword()));
 				u.setConfirmaSenha(new String(txtConfirmaSenha.getPassword()));			
 				

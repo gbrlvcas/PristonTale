@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import interfaceGrafica.IG_Cadastrar_Pessoal;
-import interfaceGrafica.IG_Cadastrar_Usuario;
+import interfaceGrafica.IG_Pessoal;
+import interfaceGrafica.IG_Usuarios;
 import interfaceGrafica.IG_Principal_ADM;
 
 public class Acao {
@@ -21,7 +21,7 @@ public class Acao {
 	public void usuarioADM() {
 		
 	//Adicionando o ADM
-	Usuarios usu = new Usuarios();
+	MO_Usuarios usu = new MO_Usuarios();
 		
 		//Criando o usuario ADM
 		usu.setUsuario("admin");
@@ -29,7 +29,7 @@ public class Acao {
 		usu.setPoderAcesso(0);
 
 		//Adicionando ao ArrayList
-		Usuarios.dados.add(usu);
+		MO_Usuarios.dados.add(usu);
 	
 	}
 	
@@ -46,27 +46,27 @@ public class Acao {
 			}
 		
 		//Verificar se usúario ja está cadastrado
-		for(int validador = 0; validador < Usuarios.dados.size() ; validador++) {
+		for(int validador = 0; validador < MO_Usuarios.dados.size() ; validador++) {
 		
 				//Verificando o Usuário
-			if(usuario.equals(Usuarios.dados.get(validador).getUsuario())) {
+			if(usuario.equals(MO_Usuarios.dados.get(validador).getUsuario())) {
 				
 					//Verificando a Senha
-				if(senha.equals(Usuarios.dados.get(validador).getSenha())) {
+				if(senha.equals(MO_Usuarios.dados.get(validador).getSenha())) {
 					
 						//Verificando o poder de acesso [Administrador]
-					if(Usuarios.dados.get(validador).getPoderAcesso() == 0) {
+					if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 0) {
 						
 						IG_Principal_ADM adm = new IG_Principal_ADM();
 						adm.setVisible(true);
 						
 					
 						//Verificando o poder de acesso [GM]
-					}else if(Usuarios.dados.get(validador).getPoderAcesso() == 1) {
+					}else if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 1) {
 						JOptionPane.showMessageDialog(null, "GM Logado");
 						
 						//Verificando o poder de acesso [Player]
-					}else if(Usuarios.dados.get(validador).getPoderAcesso() == 2) {
+					}else if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 2) {
 						JOptionPane.showMessageDialog(null, "Player Logado");
 						
 					}
