@@ -2,8 +2,11 @@ package codigo;
 
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import interfaceGrafica.IG_Cadastrar_Pessoal;
+import interfaceGrafica.IG_Cadastrar_Usuario;
 import interfaceGrafica.IG_Principal_ADM;
 
 public class Acao {
@@ -74,11 +77,31 @@ public class Acao {
 		}
 	}
 	
+	//Método - Verificar disponibilidade do ID
+	public boolean idDisponivel (String idDisponivel) {
+	
+		//Variavel
+		boolean verificaID = false;
+		
+			//Verificando os ID's
+			for(int analisa = 0 ; analisa < Usuarios.dados.size() ; analisa++) {
+				if(idDisponivel.equals(Usuarios.dados.get(analisa).getUsuario())) {
+					verificaID = true;
+				}
+				
+			}
+			
+			//Retornar
+			return verificaID;
+	}
+
 	
 	//Método - Validar cadastro [Usuario]
-	public void validarUsuario(String novoUsuario, String novaSenha, String confirmaSenha) {
+	public void validarUsuario() {
+		
 		
 		//Verificar possíveis erros
+		erroCadastro = 0;
 		
 		//Erro 0 = Sem erros
 		//Erro 1 = Campo em branco
@@ -86,7 +109,7 @@ public class Acao {
 		//Erro 3 = As senhas não coincidem
 		
 			//Campos em branco
-			if(novoUsuario.equals("") || novaSenha.equals("") || confirmaSenha.equals("")) {
+			if(IG_Cadastrar_Usuario.novoUsuario.equals("") || IG_Cadastrar_Usuario.novaSenha.equals("") || IG_Cadastrar_Usuario.confirmaSenha.equals("")) {
 				erroCadastro = 1;
 				mensagemErro = "Não deixe nenhum campo em branco";
 				
@@ -95,13 +118,13 @@ public class Acao {
 			//Verificar se ID ja existe
 			for(int validador = 0 ; validador < Usuarios.dados.size() ; validador++) {
 				
-				if(novoUsuario.equals(Usuarios.dados.get(validador).getUsuario())) {
+				if(IG_Cadastrar_Usuario.novoUsuario.equals(Usuarios.dados.get(validador).getUsuario())) {
 					erroCadastro = 2;
 					mensagemErro = "Essa ID ja está sendo usada";
 				}
 				
 			//Verificar se as senhas estão iguais
-				if(!novaSenha.equals(confirmaSenha)) {
+				if(!IG_Cadastrar_Usuario.novaSenha.equals(IG_Cadastrar_Usuario.confirmaSenha)) {
 					erroCadastro = 3;
 					mensagemErro = "As senhas não coincidem";
 				}
@@ -110,17 +133,18 @@ public class Acao {
 	
 	
 	//Método - Validar cadastro [Dados pessoais]
-	public void validarDadosPessoais(String nomeUsuario, String sobrenomeUsuario, String datanascimentoUsuario, String emailUsuario, boolean termoSelecionado) {
+	public void validarDadosPessoais() {
 		
-			//Campos em branco
-			if(nomeUsuario.equals("") || sobrenomeUsuario.equals("") || datanascimentoUsuario.equals("") || emailUsuario.equals("")) {
+			//Campos em branco 
+			if(IG_Cadastrar_Pessoal.nomeUsuario.equals("") || IG_Cadastrar_Pessoal.sobrenomeUsuario.equals("") || IG_Cadastrar_Pessoal.datanascimentoUsuario.equals("") || IG_Cadastrar_Pessoal.emailUsuario.equals("")) {
+				
 				erroCadastro = 1;
 				mensagemErro = "Não deixe nenhum campo em branco";
 				
 			}
 			
 			//Verificar se a caixa de termo foi selecionada
-			if(termoSelecionado == false) {
+			if(IG_Cadastrar_Pessoal.termoSelecionado == false) {
 				erroCadastro = 2;
 				mensagemErro = "Confirme os termos que você não leu";
 			}
@@ -128,26 +152,38 @@ public class Acao {
 	
 	
 	//Método - Cadastrar o usuario no sistema
-	public void cadastraPlayer(String novoUsuario, String novaSenha, String confirmaSenha, String nomeUsuario, String sobrenomeUsuario, String datanascimentoUsuario, String emailUsuario) {
+	public void cadastraPlayer() {
 		
 		//Instanciando a classe Usuarios
 		Usuarios usu = new Usuarios();
 		
+		
 		//Capturando os valores das variaveis
-		usu.setUsuario(novoUsuario);
-		usu.setSenha(novaSenha);
-		usu.setNome(nomeUsuario);
-		usu.setSobrenome(sobrenomeUsuario);
-		usu.setDataNascimento(datanascimentoUsuario);
-		usu.setEmail(emailUsuario);
+		usu.setUsuario(IG_Cadastrar_Usuario.novoUsuario);
+		usu.setSenha(IG_Cadastrar_Usuario.novaSenha);
+		usu.setNome(IG_Cadastrar_Pessoal.nomeUsuario);
+		usu.setSobrenome(IG_Cadastrar_Pessoal.sobrenomeUsuario);
+		usu.setDataNascimento(IG_Cadastrar_Pessoal.datanascimentoUsuario);
+		usu.setEmail(IG_Cadastrar_Pessoal.emailUsuario);
 		usu.setPoderAcesso(2);
+		
+		System.out.println(IG_Cadastrar_Usuario.novoUsuario);
+		System.out.println(IG_Cadastrar_Usuario.novaSenha);
+		System.out.println(IG_Cadastrar_Pessoal.nomeUsuario);
+		System.out.println(IG_Cadastrar_Pessoal.sobrenomeUsuario);
+		System.out.println(IG_Cadastrar_Pessoal.datanascimentoUsuario);
+		System.out.println(IG_Cadastrar_Pessoal.emailUsuario);
+		
+		
 		
 		//Gerando código do usuario
 		Random codigoUsuario = new Random();
 		usu.setChaveAcesso(codigoUsuario.nextInt(99999));
-	
+		System.out.println(codigoUsuario);
+		
 		//Adicionando os dados ao vetor
 		Usuarios.dados.add(usu);
+		
 		
 		}
 	

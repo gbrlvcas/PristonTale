@@ -11,11 +11,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
@@ -24,14 +28,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import codigo.Acao;
-import codigo.Usuarios;
-import javax.swing.JFormattedTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JCheckBox;
 
 public class IG_Cadastrar_Pessoal extends JFrame {
 
@@ -40,6 +36,13 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 	private JFormattedTextField txtDataNascimento;
 	private JTextField txtEmailUsuario;
 	private JTextField txtSobrenomeUsuario;
+	
+	//Atributos
+	public static String nomeUsuario;
+	public static String sobrenomeUsuario;
+	public static String datanascimentoUsuario;
+	public static String emailUsuario;
+	public static boolean termoSelecionado;
 
 	//JFrame - Janela do cadastro [Usuario] =========================================================================================================
 	
@@ -200,8 +203,8 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				IG_Cadastrar_Usuario usu = new IG_Cadastrar_Usuario();
-				usu.setVisible(true);
+				IG_Cadastrar_Usuario ICU = new IG_Cadastrar_Usuario();
+				ICU.setVisible(true);
 
 			}
 			
@@ -241,12 +244,13 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//Pegar os dados digitados
-				String nomeUsuario = txtNomeUsuario.getText().toString();
-				String sobrenomeUsuario = txtSobrenomeUsuario.getText().toString();
-				String datanascimentoUsuario = txtDataNascimento.getText().toString();
-				String emailUsuario = txtEmailUsuario.getText().toString();
-				boolean termoSelecionado = true;
+				nomeUsuario = txtNomeUsuario.getText().toString();
+				sobrenomeUsuario = txtSobrenomeUsuario.getText().toString();
+				datanascimentoUsuario = txtDataNascimento.getText().toString();
+				emailUsuario = txtEmailUsuario.getText().toString();
+				termoSelecionado = true;
 				
+
 				if(!chkTermos.isSelected()) {
 					termoSelecionado = false;
 				}
@@ -254,16 +258,18 @@ public class IG_Cadastrar_Pessoal extends JFrame {
 				
 				//Instanciando [Package:Codigo / Classe: Acao]
 				Acao a = new Acao();
-				a.validarDadosPessoais(nomeUsuario, sobrenomeUsuario, datanascimentoUsuario, emailUsuario, termoSelecionado);
+				a.validarDadosPessoais();
 				
 				//Condicional
 				if(a.erroCadastro == 1 || a.erroCadastro == 2){
 					IG_Erros erros = new IG_Erros();
 					erros.setVisible(true);
 					
+					
+				}else if(a.erroCadastro == 0) {
+					
 					//Parametrizar as variaveis para cadastra-las
-					a.cadastraPlayer(nomeUsuario, sobrenomeUsuario, datanascimentoUsuario, emailUsuario, emailUsuario, emailUsuario, emailUsuario);
-			
+					a.cadastraPlayer();
 				}
 			}
 			
