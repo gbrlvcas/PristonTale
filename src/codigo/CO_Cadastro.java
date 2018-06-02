@@ -2,7 +2,7 @@ package codigo;
 
 import java.util.Random;
 
-import interfaceGrafica.IG_Dados;
+import interfaceGrafica.IG_Dados_Cadastro;
 import interfaceGrafica.IG_Erros;
 import interfaceGrafica.IG_Pessoal;
 import modelo.Estatica;
@@ -121,7 +121,7 @@ public class CO_Cadastro {
 			chaveRecuperacao();
 			cadastrar();
 			
-			IG_Dados IGD = new IG_Dados();
+			IG_Dados_Cadastro IGD = new IG_Dados_Cadastro();
 			IGD.setVisible(true);
 		}
 	}

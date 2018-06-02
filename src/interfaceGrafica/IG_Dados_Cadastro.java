@@ -36,13 +36,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
-public class IG_Dados extends JFrame {
+public class IG_Dados_Cadastro extends JFrame {
 
 	private JPanel pnlCadastro;
 	
 	//JFrame - Janela do cadastro [Usuario] =========================================================================================================
 	
-	public IG_Dados() {
+	public IG_Dados_Cadastro() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 519);
@@ -184,7 +184,7 @@ public class IG_Dados extends JFrame {
 		
 		
 		//Botão [Voltar para tela de login]
-		JButton btnEntendi = new JButton("Entendi");
+		JButton btnEntendi = new JButton("Voltar Login");
 		btnEntendi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
