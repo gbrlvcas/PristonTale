@@ -9,6 +9,9 @@ public class Estatica {
 	 * mágicos para que possam serem cadastradas
 	 */
 	
+	//Variaveis de verificação de erro
+	public static int erroLogin = 0;
+	public static String mensagemErro = "";
 	
 	//Variaveis [JFrame - Cadastro Usuario]
 	public static String novoUsuario;

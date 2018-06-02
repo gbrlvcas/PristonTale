@@ -22,11 +22,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import codigo.Acao;
-import codigo.Usuarios;
+import codigo.CO_Cadastro;
 import modelo.Estatica;
 
-public class IG_Usuarios extends JFrame {
+public class IG_Usuario extends JFrame {
 
 	private JPanel pnlCadastro;
 	private JTextField txtNovoLogin;
@@ -38,7 +37,7 @@ public class IG_Usuarios extends JFrame {
 	
 	//JFrame - Janela do cadastro =========================================================================================================
 	
-	public IG_Usuarios() {
+	public IG_Usuario() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
@@ -110,12 +109,14 @@ public class IG_Usuarios extends JFrame {
 				//Capturando o ID digitado
 				String idDisponivel = txtNovoLogin.getText().toString().toLowerCase();
 					
-				//Instanciando [Package: Codigo / Classe: Usuario]
-				MO_Usuarios u = new MO_Usuarios();
-				u.verificaID(idDisponivel);
+				//Instanciando [Package: Codigo / Classe: CO_Usuarios]
+				CO_Cadastro COU = new CO_Cadastro();
 				
-				//Condicional
-				if(u.verificaID(idDisponivel) == true) {
+					//Chamando o método para verificar o ID
+					COU.verificaID(idDisponivel);
+				
+				//Condicional [Pegar o resultado o método acima e validar]
+				if(COU.verificaID(idDisponivel) == true) {
 					
 					lblMostrarDisponibilidade.setIcon(new ImageIcon(getClass().getResource("/ICN_Positivo.png")));
 					
@@ -245,16 +246,16 @@ public class IG_Usuarios extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//Instanciando [Package: Codigo / Classe: Acao]
-				MO_Usuarios u = new MO_Usuarios();
+				CO_Cadastro COU = new CO_Cadastro();
 				
 				//Pegar os dados digitados
 				Estatica.novoUsuario = txtNovoLogin.getText().toString().toLowerCase();
-				u.setSenha(new String(txtNovaSenha.getPassword()));
-				u.setConfirmaSenha(new String(txtConfirmaSenha.getPassword()));			
-				
+				Estatica.novaSenha = (new String(txtNovaSenha.getPassword()));
+				Estatica.confirmaSenha = (new String(txtConfirmaSenha.getPassword()));			
 				
 				//Instanciando [Package:Codigo / Classe: Acao]
-				u.verificaUsuario();
+				COU.verificaUsuario();
+				
 				
 			}
 			

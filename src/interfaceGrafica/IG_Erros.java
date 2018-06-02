@@ -9,6 +9,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 import codigo.Acao;
+import modelo.Estatica;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -38,7 +39,7 @@ public class IG_Erros extends JFrame {
 //Componentes =======================================================================================================================
 		
 		//Instanciando [Pacakge: Código / Classe: Ação]
-		Acao a = new Acao();
+		Estatica EST = new Estatica();
 		
 		//Mensagem cabeçalho
 		JLabel lblOcorreuAlgumErro = new JLabel("Ocorreu algum erro");
@@ -51,7 +52,7 @@ public class IG_Erros extends JFrame {
 		contentPane.add(lblOcorreuAlgumErro);
 		
 		//Mensagem de erro
-		JLabel lblErros = new JLabel(a.mensagemErro);
+		JLabel lblErros = new JLabel(EST.mensagemErro);
 		lblErros.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblErros.setHorizontalAlignment(SwingConstants.CENTER);
 		lblErros.setBounds(15, 36, 310, 29);

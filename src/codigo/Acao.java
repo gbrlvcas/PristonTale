@@ -1,35 +1,27 @@
 package codigo;
 
-import java.util.Random;
-
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import interfaceGrafica.IG_Pessoal;
-import interfaceGrafica.IG_Usuarios;
 import interfaceGrafica.IG_Principal_ADM;
+import modelo.Estatica;
+import modelo.MO_Usuarios;
 
 public class Acao {
 	
-	//Atributos
-	public static String mensagemErro = ""; //Variavel que será usada para exibir a mensagem de erros em todas inferfaces
-	public static int erroLogin = 0;
-	public static int erroCadastro = 0;
-
 	
 	//Método - Criando usuario do ADM
 	public void usuarioADM() {
 		
 	//Adicionando o ADM
-	MO_Usuarios usu = new MO_Usuarios();
+	MO_Usuarios MOU = new MO_Usuarios();
 		
 		//Criando o usuario ADM
-		usu.setUsuario("admin");
-		usu.setSenha("admin");
-		usu.setPoderAcesso(0);
+		MOU.setUsuario("admin");
+		MOU.setSenha("admin");
+		MOU.setPoderAcesso(0);
 
 		//Adicionando ao ArrayList
-		MO_Usuarios.dados.add(usu);
+		MO_Usuarios.dados.add(MOU);
 	
 	}
 	
@@ -37,12 +29,12 @@ public class Acao {
 	public void validaLogin(String usuario, String senha) {
 
 		//Verificar possíveis erros
-		erroLogin = 0; //Na classe IG_Login, a classe Acao é instanciando fora do botão, logo toda vez que o botao for clicado o valor de erro nao sera alterado para 0;
+		Estatica.erroLogin = 0; //Na classe IG_Login, a classe Acao é instanciando fora do botão, logo toda vez que o botao for clicado o valor de erro nao sera alterado para 0;
 		
 			//Campos em branco
 			if(usuario.equals("") || senha.equals("")) {
-				erroLogin = 1;
-				mensagemErro = "Não deixe nenhum campo em branco";
+				Estatica.erroLogin = 1;
+				Estatica.mensagemErro = "Não deixe nenhum campo em branco";
 			}
 		
 		//Verificar se usúario ja está cadastrado

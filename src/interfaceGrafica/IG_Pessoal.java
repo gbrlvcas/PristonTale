@@ -27,8 +27,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
-import codigo.Acao;
-import codigo.Usuarios;
+import codigo.CO_Cadastro;
+import modelo.Estatica;
 
 public class IG_Pessoal extends JFrame {
 
@@ -181,40 +181,40 @@ public class IG_Pessoal extends JFrame {
 
 		
 		//Botão [Sair]
-		JButton btnSair = new JButton("< Voltar");
+		JButton btnVoltar = new JButton("< Voltar");
 
-		btnSair.setBounds(15, 468, 96, 35);
-		btnSair.setForeground(Color.WHITE);
-		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnSair.setBackground(Color.DARK_GRAY);
-		pnlCadastro.add(btnSair);
+		btnVoltar.setBounds(15, 468, 96, 35);
+		btnVoltar.setForeground(Color.WHITE);
+		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnVoltar.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnVoltar.setBackground(Color.DARK_GRAY);
+		pnlCadastro.add(btnVoltar);
 		
 		//Ação do botão [Sair]
-		btnSair.addMouseListener(new MouseAdapter() {
+		btnVoltar.addMouseListener(new MouseAdapter() {
 			
 			//Função botão [Clique / Sair]
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				IG_Usuarios ICU = new IG_Usuarios();
-				ICU.setVisible(true);
+				IG_Usuario IGU = new IG_Usuario();
+				IGU.setVisible(true);
 
 			}
 			
 			//Função Botão [Passar por cima / Mudar cor]
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnSair.setBackground(Color.WHITE);
-				btnSair.setForeground(Color.DARK_GRAY);
+				btnVoltar.setBackground(Color.WHITE);
+				btnVoltar.setForeground(Color.DARK_GRAY);
 				
 			}
 			
 			//Função Botão [Sair de cima / Mudar cor]
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnSair.setBackground(Color.DARK_GRAY);
-				btnSair.setForeground(Color.WHITE);
+				btnVoltar.setBackground(Color.DARK_GRAY);
+				btnVoltar.setForeground(Color.WHITE);
 				
 			}
 		});
@@ -238,13 +238,13 @@ public class IG_Pessoal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//Instanciando [Package: Codigo / Classe: Usuarios]
-				MO_Usuarios u = new MO_Usuarios();
+				CO_Cadastro COU = new CO_Cadastro();
 				
 				//Pegar os dados digitados
-				u.setNome(txtNomeUsuario.getText().toString());
-				u.setSobrenome(txtSobrenomeUsuario.getText().toString());
-				u.setDataNascimento(txtDataNascimento.getText().toString());
-				u.setEmail(txtEmailUsuario.getText().toString());
+				Estatica.novoNome = txtNomeUsuario.getText().toString();
+				Estatica.novoSobrenome = txtSobrenomeUsuario.getText().toString();
+				Estatica.novaDatanascimento = txtDataNascimento.getText().toString();
+				Estatica.novoEmail = txtEmailUsuario.getText().toString();
 				
 				//Verificar se o termo foi selecionado
 				boolean termoSelecionado = true;
@@ -254,7 +254,7 @@ public class IG_Pessoal extends JFrame {
 						
 				
 				//Instanciando [Package:Codigo / Classe:Usuarios / Método: ]
-				u.verificaPessoal(termoSelecionado);
+				COU.verificaPessoal(termoSelecionado);
 				
 
 			}

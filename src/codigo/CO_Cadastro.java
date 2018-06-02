@@ -1,22 +1,22 @@
 package codigo;
 
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
-import interfaceGrafica.IG_Cadastrar_Pessoal;
 import interfaceGrafica.IG_Erros;
+import interfaceGrafica.IG_Pessoal;
+import interfaceGrafica.IG_Usuario;
 import modelo.Estatica;
+import modelo.MO_Usuarios;
 
-public class CO_Usuarios {
+public class CO_Cadastro {
 
 	
 	//Método - Verificar ID [Botão]
 	public boolean verificaID(String idDisponivel) {
 		
 		//Condicional [For avançado]
-		for(Usuarios u : dados) {
-			if(idDisponivel.equals(u.usuario)) {
+		for(MO_Usuarios MOU : MO_Usuarios.dados) {
+			if(idDisponivel.equals(MOU.getUsuario())) {
 				return false;
 			}
 		}
@@ -24,9 +24,13 @@ public class CO_Usuarios {
 		return true;
 		
 		}
+	
 		
 	//Método - Validar dados [JFrame Usuario]
 	public void verificaUsuario() {
+		
+		//Instanciando [Package: modelo / Classe: Estatica]
+		Estatica EST = new Estatica();
 		
 		//Variaveis
 		int erroUsuario = 0;
@@ -37,9 +41,10 @@ public class CO_Usuarios {
 		//Erro 3 = As senhas não coincidem
 		
 		//Erro 1 - Campo em branco
-		if(Estatica.novoUsuario("") || senha.equals("") || confirmaSenha.equals("")) {
+		if(Estatica.novoUsuario.equals("") || Estatica.novaSenha.equals("") || Estatica.confirmaSenha.equals("")) {
+			
 			erroUsuario = 1;
-			Acao.mensagemErro = "Não deixe nenhum campo em branco";
+			EST.mensagemErro = "Não deixe nenhum campo em branco";
 			
 			IG_Erros IE = new IG_Erros();
 				IE.setVisible(true);
@@ -47,10 +52,11 @@ public class CO_Usuarios {
 		}
 		
 		//Erro 2 - ID já cadastrado
-		for(Usuarios u : dados) {
-			if(usuario.equals(u.usuario)) {
+		for(MO_Usuarios MOU : MO_Usuarios.dados) {
+			if(Estatica.novoUsuario.equals(MOU.getUsuario())) {
+				
 				erroUsuario = 2;
-				Acao.mensagemErro = "ID já cadastrada";
+				EST.mensagemErro = "ID já cadastrada";
 				
 				IG_Erros IE = new IG_Erros();
 				IE.setVisible(true);
@@ -58,9 +64,10 @@ public class CO_Usuarios {
 		}
 		
 		//Erro 3 - Senhas não coincidem
-		if(!senha.equals(confirmaSenha)) {
+		if(!Estatica.novaSenha.equals(Estatica.confirmaSenha)) {
+			
 			erroUsuario = 3;
-			Acao.mensagemErro = "As senhas não coincidem";
+			EST.mensagemErro = "As senhas não coincidem";
 					
 			IG_Erros IE = new IG_Erros();
 			IE.setVisible(true);
@@ -68,15 +75,25 @@ public class CO_Usuarios {
 		
 		//0 - Indo para o próximo JFrame
 		if(erroUsuario == 0) {
-			IG_Cadastrar_Pessoal ICP = new IG_Cadastrar_Pessoal();
 			
-			ICP.setVisible(true);
+			//Fechando o JFrame [Usuario]
+			IG_Usuario IGU = new IG_Usuario();
+			IGU.dispose();
+			
+			//Abrindo o JFrame [Pessoal]
+			IG_Pessoal IGP = new IG_Pessoal();
+			IGP.setVisible(true);
 		}
+		
 	}
+	
 	
 	//Método - Validar dados [JFrame Dados Pessoais]
 	public void verificaPessoal(boolean termoSelecionado) {
 		
+		//Instanciando [Package: modelo / Classe: Estatica]
+		Estatica EST = new Estatica();
+				
 		//Variaveis
 		int erroPessoal = 0;
 		
@@ -85,9 +102,9 @@ public class CO_Usuarios {
 		//Erro 2 = Caixa não selecionada
 	
 		//Erro 1 - Campos em branco
-		if(nome.equals("") || sobrenome.equals("") || dataNascimento.equals("") || email.equals("")) {
+		if(Estatica.novoNome.equals("") || Estatica.novoSobrenome.equals("") || Estatica.novaDatanascimento.equals("") || Estatica.novoEmail.equals("")) {
 			erroPessoal = 1;
-			Acao.mensagemErro = "Não deixe nenhum campo em branco";
+			EST.mensagemErro = "Não deixe nenhum campo em branco";
 			
 			IG_Erros IE = new IG_Erros();
 			IE.setVisible(true);
@@ -97,7 +114,7 @@ public class CO_Usuarios {
 		//Erro 2 - Caixa não selecionada
 		if(termoSelecionado == false) {
 			erroPessoal = 2;
-			Acao.mensagemErro ="Marque a caixa do termo que você não leu";
+			EST.mensagemErro ="Marque a caixa do termo que você não leu";
 			
 			IG_Erros IE = new IG_Erros();
 			IE.setVisible(true);
@@ -110,10 +127,27 @@ public class CO_Usuarios {
 		}
 	}
 	
-	//Método para cadastrar
+	//Método para cadastrar [Está sendo usado na variavel anterior]
 	public void cadastrar() {
-		u.add(set)
-		dados.add(this);
+		
+		//Instanciando [Package: modelo / Classe: MO_Usuarios]
+		MO_Usuarios MOU = new MO_Usuarios();
+		
+		
+		  //Atribuindo valores das variaveis estaticas, para os método magicos
+		  MOU.setUsuario(Estatica.novoUsuario);
+		  MOU.setSenha(Estatica.novaSenha);
+		  MOU.setNome(Estatica.novoNome);
+		  MOU.setSobrenome(Estatica.novoSobrenome);
+		  MOU.setDataNascimento(Estatica.novaDatanascimento);
+		  MOU.setEmail(Estatica.novoEmail);
+		  MOU.setPoderAcesso(2);
+		  
+		  System.out.println(MOU);
+		  
+		  //Adicionar ao vetor
+		  MO_Usuarios.dados.add(MOU);
+
 	}
 	
 	}

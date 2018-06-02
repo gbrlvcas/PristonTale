@@ -11,10 +11,13 @@ public class MO_Usuarios {
 	Poder acesso = 2 : Player
 	*/
 	
-	//Atributos
+
+	//JFram [IG_Usuario]
 	private String usuario;
 	private String senha;
 	private String confirmaSenha;
+	
+	//JFrame [IG_Pessoal]
 	private String nome;
 	private String sobrenome;
 	private String dataNascimento;

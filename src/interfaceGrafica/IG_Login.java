@@ -24,7 +24,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import codigo.Acao;
-import codigo.Usuarios;
+import modelo.Estatica;
+import modelo.MO_Usuarios;
+
 
 public class IG_Login extends JFrame {
 
@@ -118,11 +120,13 @@ public class IG_Login extends JFrame {
 				String usuario = txtUsuario.getText().toString();
 				String senha = new String(txtSenha.getPassword());
 				
-				//Instanciando método [Package: Codigo / Classe: Acao /Método: validaUsuario]
+				//Instanciando [Package: codigo / Classe: Acao / Método: validaUsuario]
 				a.validaLogin(usuario, senha);
 				
+
+				
 				//Condicional
-				if(a.erroLogin == 1) {
+				if(Estatica.erroLogin == 1) {
 					
 					//Instanciando [Classe:IG_Erros]
 					IG_Erros erros = new IG_Erros();
@@ -191,7 +195,7 @@ public class IG_Login extends JFrame {
 		
 		
 		//Informação sobre a versão atual do sistema
-		JLabel lblVerso = new JLabel("Vers\u00E3o 1.0");
+		JLabel lblVerso = new JLabel("Vers\u00E3o 1.7");
 		lblVerso.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblVerso.setBounds(173, 286, 57, 14);
 		pnlLogin.add(lblVerso);
@@ -210,8 +214,8 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Usuarios cds = new IG_Usuarios();
-				cds.setVisible(true);
+				IG_Usuario IGU = new IG_Usuario();
+				IGU.setVisible(true);
 				dispose();
 			
 			}
@@ -246,9 +250,9 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Usuarios cds = new IG_Usuarios();
+				IG_Usuario cds = new IG_Usuario();
 				cds.setVisible(true);
-				dispose();
+				
 			
 			}
 			
