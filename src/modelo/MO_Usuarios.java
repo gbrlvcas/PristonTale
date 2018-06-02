@@ -23,7 +23,7 @@ public class MO_Usuarios {
 	private String dataNascimento;
 	private String email;
 	private int poderAcesso;
-	private int chaveAcesso;
+	private String chaveRecuperacao;
 
 	
 	
@@ -77,11 +77,11 @@ public class MO_Usuarios {
 	public void setPoderAcesso(int poderAcesso) {
 		this.poderAcesso = poderAcesso;
 	}
-	public int getChaveAcesso() {
-		return chaveAcesso;
+	public String getChaveRecuperacao() {
+		return chaveRecuperacao;
 	}
-	public void setChaveAcesso(int chaveAcesso) {
-		this.chaveAcesso = chaveAcesso;
+	public void setChaveRecuperacao(String string) {
+		this.chaveRecuperacao = string;
 	}
 
 	

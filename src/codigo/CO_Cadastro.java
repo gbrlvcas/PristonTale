@@ -1,15 +1,18 @@
 package codigo;
 
-import javax.swing.JOptionPane;
+import java.util.Random;
 
+import interfaceGrafica.IG_Dados;
 import interfaceGrafica.IG_Erros;
 import interfaceGrafica.IG_Pessoal;
-import interfaceGrafica.IG_Usuario;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
 public class CO_Cadastro {
 
+	//Atributos
+	public int erroUsuario = 0;
+	public int erroPessoal = 0;
 	
 	//Método - Verificar ID [Botão]
 	public boolean verificaID(String idDisponivel) {
@@ -33,7 +36,7 @@ public class CO_Cadastro {
 		Estatica EST = new Estatica();
 		
 		//Variaveis
-		int erroUsuario = 0;
+		erroUsuario = 0;
 		
 		//0 = Sem erros
 		//Erro 1 = Campo em branco
@@ -76,10 +79,6 @@ public class CO_Cadastro {
 		//0 - Indo para o próximo JFrame
 		if(erroUsuario == 0) {
 			
-			//Fechando o JFrame [Usuario]
-			IG_Usuario IGU = new IG_Usuario();
-			IGU.dispose();
-			
 			//Abrindo o JFrame [Pessoal]
 			IG_Pessoal IGP = new IG_Pessoal();
 			IGP.setVisible(true);
@@ -95,7 +94,7 @@ public class CO_Cadastro {
 		Estatica EST = new Estatica();
 				
 		//Variaveis
-		int erroPessoal = 0;
+		erroPessoal = 0;
 		
 		//0 = Sem erros
 		//Erro 1 = Campos em branco
@@ -120,11 +119,35 @@ public class CO_Cadastro {
 			IE.setVisible(true);
 		}
 		
-		//0 - Cadastrando e indo para o proximo JFrame
+		//0 - Cadastrando, gerando a chave e indo para o proximo JFrame
 		if(erroPessoal == 0) {
 			cadastrar();
-			JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+			
+			chaveRecuperacao();
+			
+			IG_Dados IGD = new IG_Dados();
+			IGD.setVisible(true);
 		}
+	}
+	
+	//Método - Gerar chave de recuperação
+	public void chaveRecuperacao() {
+		
+		//Variaveis
+		String chaveRecuperacao = "";
+		
+		//Gerador randomico
+		Random gerador = new Random();
+		
+		//Usando o for para gerar
+		for(int gera = 0 ; gera < 7 ; gera++) {
+		
+			chaveRecuperacao+= gerador.nextInt(10);
+			
+		}
+		
+		Estatica.chaveRecuperacao = chaveRecuperacao;
+		
 	}
 	
 	//Método para cadastrar [Está sendo usado na variavel anterior]
@@ -142,6 +165,7 @@ public class CO_Cadastro {
 		  MOU.setDataNascimento(Estatica.novaDatanascimento);
 		  MOU.setEmail(Estatica.novoEmail);
 		  MOU.setPoderAcesso(2);
+		  MOU.setChaveRecuperacao(Estatica.chaveRecuperacao);
 		  
 		  System.out.println(MOU);
 		  

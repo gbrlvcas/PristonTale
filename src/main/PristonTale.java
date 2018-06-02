@@ -1,4 +1,4 @@
-package codigo;
+package main;
 
 import interfaceGrafica.IG_Login;
 

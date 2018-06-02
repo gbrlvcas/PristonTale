@@ -6,7 +6,7 @@ import interfaceGrafica.IG_Principal_ADM;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
-public class Acao {
+public class CO_Login {
 	
 	
 	//Método - Criando usuario do ADM
@@ -18,7 +18,12 @@ public class Acao {
 		//Criando o usuario ADM
 		MOU.setUsuario("admin");
 		MOU.setSenha("admin");
+		MOU.setNome("admin");
+		MOU.setSobrenome("admin");
+		MOU.setDataNascimento("20/05/1996");
+		MOU.setEmail("admin");
 		MOU.setPoderAcesso(0);
+		MOU.setChaveRecuperacao("admin");
 
 		//Adicionando ao ArrayList
 		MO_Usuarios.dados.add(MOU);

@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-import codigo.Acao;
+import codigo.CO_Login;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
@@ -59,7 +59,7 @@ public class IG_Login extends JFrame {
 //Componentes =======================================================================================================================
 		
 		//Instanciando [Classe: Acao]
-		Acao a = new Acao();
+		CO_Login a = new CO_Login();
 			
 			//Instanciando [Classe: Acao / Método: usuarioADM]
 			if(MO_Usuarios.dados.isEmpty()) {

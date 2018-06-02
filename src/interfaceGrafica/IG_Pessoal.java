@@ -256,7 +256,13 @@ public class IG_Pessoal extends JFrame {
 				//Instanciando [Package:Codigo / Classe:Usuarios / Método: ]
 				COU.verificaPessoal(termoSelecionado);
 				
+					//Fechar componente caso não haja erro no cadastro
+						//Direcionar para o próximo componente
+					if(COU.erroPessoal == 0) {
+						dispose();
 
+					}
+			
 			}
 			
 			//Função Botão [Passar por cima / Mudar cor]

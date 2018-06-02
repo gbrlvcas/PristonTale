@@ -256,6 +256,11 @@ public class IG_Usuario extends JFrame {
 				//Instanciando [Package:Codigo / Classe: Acao]
 				COU.verificaUsuario();
 				
+				//Fechar componente caso não haja erro no cadastro, e direcionar para o proximo componente
+				if(COU.erroUsuario == 0) {
+					dispose();
+				}
+				
 				
 			}
 			

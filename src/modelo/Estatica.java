@@ -23,4 +23,7 @@ public class Estatica {
 	public static String novoSobrenome;
 	public static String novaDatanascimento;
 	public static String novoEmail;
+	
+	//Variavel [Chave recuperação]
+	public static String chaveRecuperacao;
 }
