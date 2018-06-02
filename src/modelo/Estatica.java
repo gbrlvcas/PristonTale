@@ -9,16 +9,21 @@ public class Estatica {
 	 * mágicos para que possam serem cadastradas
 	 */
 	
-	//Variaveis de verificação de erro
-	public static int erroLogin = 0;
+	//Variaveis para todas classes
 	public static String mensagemErro = "";
-	
-	//Variaveis [JFrame - Cadastro Usuario]
-	public static String novoUsuario;
-	public static String novaSenha;
 	public static String confirmaSenha;
 	
+	//Variaveis [JFrame - Login]
+	public static int erroLogin = 0;
+	
+	//Variaveis [JFrame - Cadastro Usuario]
+	public static int erroUsuario = 0;
+	public static String novoUsuario;
+	public static String novaSenha;
+
+
 	//Variaveis [JFrame - Cadastro pessoal]
+	public static int erroPessoal = 0;
 	public static String novoNome;
 	public static String novoSobrenome;
 	public static String novaDatanascimento;
@@ -26,4 +31,13 @@ public class Estatica {
 	
 	//Variavel [Chave recuperação]
 	public static String chaveRecuperacao;
+	
+	//Variaveis [JFrame - Recuperar senha]
+	public static int erroRecuperar;
+	public static String verificaUsuario;
+	public static String verificaChave;
+	public static String alterarSenha;
+	
+
+	
 }

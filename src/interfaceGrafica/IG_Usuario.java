@@ -127,6 +127,7 @@ public class IG_Usuario extends JFrame {
 					}
 			}
 			
+			
 				//Função Botão [Passar por cima / Mudar cor]
 				@Override
 				public void mouseEntered(MouseEvent e) {
@@ -257,7 +258,7 @@ public class IG_Usuario extends JFrame {
 				COU.verificaUsuario();
 				
 				//Fechar componente caso não haja erro no cadastro, e direcionar para o proximo componente
-				if(COU.erroUsuario == 0) {
+				if(Estatica.erroUsuario == 0) {
 					dispose();
 				}
 				

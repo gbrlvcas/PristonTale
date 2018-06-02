@@ -258,7 +258,7 @@ public class IG_Pessoal extends JFrame {
 				
 					//Fechar componente caso não haja erro no cadastro
 						//Direcionar para o próximo componente
-					if(COU.erroPessoal == 0) {
+					if(Estatica.erroPessoal == 0) {
 						dispose();
 
 					}

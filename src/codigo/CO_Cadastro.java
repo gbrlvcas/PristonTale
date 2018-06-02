@@ -10,9 +10,6 @@ import modelo.MO_Usuarios;
 
 public class CO_Cadastro {
 
-	//Atributos
-	public int erroUsuario = 0;
-	public int erroPessoal = 0;
 	
 	//Método - Verificar ID [Botão]
 	public boolean verificaID(String idDisponivel) {
@@ -36,7 +33,7 @@ public class CO_Cadastro {
 		Estatica EST = new Estatica();
 		
 		//Variaveis
-		erroUsuario = 0;
+		Estatica.erroUsuario = 0;
 		
 		//0 = Sem erros
 		//Erro 1 = Campo em branco
@@ -46,7 +43,7 @@ public class CO_Cadastro {
 		//Erro 1 - Campo em branco
 		if(Estatica.novoUsuario.equals("") || Estatica.novaSenha.equals("") || Estatica.confirmaSenha.equals("")) {
 			
-			erroUsuario = 1;
+			Estatica.erroUsuario = 1;
 			EST.mensagemErro = "Não deixe nenhum campo em branco";
 			
 			IG_Erros IE = new IG_Erros();
@@ -58,7 +55,7 @@ public class CO_Cadastro {
 		for(MO_Usuarios MOU : MO_Usuarios.dados) {
 			if(Estatica.novoUsuario.equals(MOU.getUsuario())) {
 				
-				erroUsuario = 2;
+				Estatica.erroUsuario = 2;
 				EST.mensagemErro = "ID já cadastrada";
 				
 				IG_Erros IE = new IG_Erros();
@@ -69,7 +66,7 @@ public class CO_Cadastro {
 		//Erro 3 - Senhas não coincidem
 		if(!Estatica.novaSenha.equals(Estatica.confirmaSenha)) {
 			
-			erroUsuario = 3;
+			Estatica.erroUsuario = 3;
 			EST.mensagemErro = "As senhas não coincidem";
 					
 			IG_Erros IE = new IG_Erros();
@@ -77,7 +74,7 @@ public class CO_Cadastro {
 		}
 		
 		//0 - Indo para o próximo JFrame
-		if(erroUsuario == 0) {
+		if(Estatica.erroUsuario == 0) {
 			
 			//Abrindo o JFrame [Pessoal]
 			IG_Pessoal IGP = new IG_Pessoal();
@@ -94,7 +91,7 @@ public class CO_Cadastro {
 		Estatica EST = new Estatica();
 				
 		//Variaveis
-		erroPessoal = 0;
+		Estatica.erroPessoal = 0;
 		
 		//0 = Sem erros
 		//Erro 1 = Campos em branco
@@ -102,7 +99,7 @@ public class CO_Cadastro {
 	
 		//Erro 1 - Campos em branco
 		if(Estatica.novoNome.equals("") || Estatica.novoSobrenome.equals("") || Estatica.novaDatanascimento.equals("") || Estatica.novoEmail.equals("")) {
-			erroPessoal = 1;
+			Estatica.erroPessoal = 1;
 			EST.mensagemErro = "Não deixe nenhum campo em branco";
 			
 			IG_Erros IE = new IG_Erros();
@@ -112,7 +109,7 @@ public class CO_Cadastro {
 		
 		//Erro 2 - Caixa não selecionada
 		if(termoSelecionado == false) {
-			erroPessoal = 2;
+			Estatica.erroPessoal = 2;
 			EST.mensagemErro ="Marque a caixa do termo que você não leu";
 			
 			IG_Erros IE = new IG_Erros();
@@ -120,10 +117,9 @@ public class CO_Cadastro {
 		}
 		
 		//0 - Cadastrando, gerando a chave e indo para o proximo JFrame
-		if(erroPessoal == 0) {
-			cadastrar();
-			
+		if(Estatica.erroPessoal == 0) {
 			chaveRecuperacao();
+			cadastrar();
 			
 			IG_Dados IGD = new IG_Dados();
 			IGD.setVisible(true);
@@ -167,7 +163,7 @@ public class CO_Cadastro {
 		  MOU.setPoderAcesso(2);
 		  MOU.setChaveRecuperacao(Estatica.chaveRecuperacao);
 		  
-		  System.out.println(MOU);
+		  System.out.println(MOU.getChaveRecuperacao());
 		  
 		  //Adicionar ao vetor
 		  MO_Usuarios.dados.add(MOU);

@@ -250,8 +250,8 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Usuario cds = new IG_Usuario();
-				cds.setVisible(true);
+				IG_RecuperarSenha IGR = new IG_RecuperarSenha();
+				IGR.setVisible(true);
 				
 			
 			}
