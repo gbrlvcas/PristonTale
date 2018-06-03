@@ -1,51 +1,53 @@
 package interfaceGrafica;
 
-import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.border.BevelBorder;
-import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.border.MatteBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
-import javax.swing.JDesktopPane;
-import javax.swing.JToolBar;
-import javax.swing.border.LineBorder;
-import java.awt.Rectangle;
 
-public class IG_Estatisticas_ADM extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
+
+import codigo.CO_ADM;
+
+import javax.swing.JMenuBar;
+import java.awt.Component;
+import javax.swing.SwingConstants;
+import java.awt.Insets;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+
+public class IG_ADM_Estatisticas extends JFrame {
 
 	private JPanel pnlADM;
+	private JTable tabEstatisticas;
 
 //JFrame - Janela do ADM ===========================================================================================================
 		
-	public IG_Estatisticas_ADM() {
-		setBounds(new Rectangle(300, 0, 0, 0));
+	public IG_ADM_Estatisticas() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 512, 382);
+		setBounds(100, 100, 668, 500);
 		pnlADM = new JPanel();
 		pnlADM.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pnlADM);
 		setLocationRelativeTo(null);
 		pnlADM.setLayout(null);
 		
-//Imagem do cursor ==================================================================================================================
+//Imagem do cursor e Background ==================================================================================================================
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 	    Image image = toolkit.getImage(getClass().getResource("/PT_Mouse.png"));
@@ -53,15 +55,41 @@ public class IG_Estatisticas_ADM extends JFrame {
 	    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_Mouse");
 		setCursor(cursor);
 		
+
+		//Background
+		JLabel lblBackground = new JLabel("");
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_ADM.jpg"));
+		lblBackground.setBounds(0, 0, 668, 118);
+		pnlADM.add(lblBackground);
+		
+		
+		//Instanciando [Package: codigo / Classe: CO_ADM]
+		CO_ADM COA = new CO_ADM();
+		
+		//Tabela de estatisticas
+		JScrollPane scrEstatisticas = new JScrollPane(tabEstatisticas);
+		scrEstatisticas.setBounds(10, 470, 658, -352);
+		pnlADM.add(scrEstatisticas);
+		
+		tabEstatisticas = new JTable(COA.ListarEstatisticas());
+		scrEstatisticas.setViewportView(tabEstatisticas);
+		
+		
 		
 		//Botão [Sair]
 		JButton btnSair = new JButton("SAIR");
+		btnSair.setBounds(569, 470, 99, 30);
+		pnlADM.add(btnSair);
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnSair.setBorder(null);
 		btnSair.setBackground(Color.DARK_GRAY);
-		btnSair.setBounds(10, 434, 99, 43);
-		pnlADM.add(btnSair);
+		
+
+		
+		
+		
+		
 		
 		//Ação do botão [Sair]
 		btnSair.addMouseListener(new MouseAdapter() {
@@ -89,6 +117,7 @@ public class IG_Estatisticas_ADM extends JFrame {
 			}
 			
 		});
+		
 		
 	}
 }

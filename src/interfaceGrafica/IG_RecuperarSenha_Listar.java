@@ -26,7 +26,7 @@ import codigo.CO_Cadastro;
 import codigo.CO_RecuperarSenha;
 import modelo.Estatica;
 
-public class IG_Dados_RecuperarSenha extends JFrame {
+public class IG_RecuperarSenha_Listar extends JFrame {
 
 	private JPanel pnlCadastro;
 	public static String novoUsuario;
@@ -35,7 +35,7 @@ public class IG_Dados_RecuperarSenha extends JFrame {
 	
 	//JFrame - Janela do cadastro =========================================================================================================
 	
-	public IG_Dados_RecuperarSenha() {
+	public IG_RecuperarSenha_Listar() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 368);

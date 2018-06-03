@@ -24,12 +24,12 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
+import codigo.CO_ADM;
 import codigo.CO_Cadastro;
 import modelo.Estatica;
 
@@ -57,7 +57,7 @@ public class IG_Cadastro extends JFrame {
 		setLocationRelativeTo(null);
 		pnlPrincipal.setLayout(null);
 		
-//Imagem do cursor, Background e Painel Principal ==================================================================================================================
+//Imagem do cursor e Background ==================================================================================================================
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image image = toolkit.getImage(getClass().getResource("/PT_Mouse.png"));
@@ -71,15 +71,17 @@ public class IG_Cadastro extends JFrame {
 		lblCabecalho.setBounds(0, 0, 450, 126);
 		pnlPrincipal.add(lblCabecalho);
 			
+
+		
+//Componentes [Painel Usuario] ========================================================================================================================================
+		
+	
 		//Painel Principal [CardLayout]
 		JPanel pnlCadastro = new JPanel();
 		pnlCadastro.setBounds(0, 126, 450, 425);
 		pnlPrincipal.add(pnlCadastro);
 		pnlCadastro.setLayout(new CardLayout(0, 0));
 		
-//Componentes [Painel Usuario] ========================================================================================================================================
-		
-	
 		//Painel Usuario [Dentro do CardLayout]
 		JPanel pnlUsuario = new JPanel();
 		pnlCadastro.add(pnlUsuario, "Painel Usuario");
@@ -491,14 +493,14 @@ public class IG_Cadastro extends JFrame {
 
 					//Fechar componente caso não haja erro no cadastro
 						//Direcionar para o próximo componente
-					if(Estatica.erroPessoal == 0) {
-					dispose();
-					IG_Cadastro IGC = new IG_Cadastro();
-					IGC.setVisible(true);
+						if(Estatica.erroPessoal == 0) {
+								dispose();
+						IG_Cadastro_Listar IGCL = new IG_Cadastro_Listar();
+							IGCL.setVisible(true);
 					
-					CardLayout dados = (CardLayout) pnlCadastro.getLayout();
-					dados.show(pnlCadastro, "Painel Dados");
-					
+							//Gravar dados para Estatisticas
+							CO_ADM COA = new CO_ADM();
+							COA.gravarEstatisticas();
 
 					
 					}
@@ -521,145 +523,6 @@ public class IG_Cadastro extends JFrame {
 						
 				}
 			});
-
-//Componentes [Painel Dados] ========================================================================================================================================
-	
-
-		//Painel Dados [CardLayout]
-		JPanel pnlDados = new JPanel();
-		pnlCadastro.add(pnlDados, "Painel Dados");
-		pnlDados.setLayout(null);
-		
-		//Informações sobre o painel
-		JLabel lblInfoDados = new JLabel("Seus dados cadastrados");
-		lblInfoDados.setOpaque(true);
-		lblInfoDados.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInfoDados.setForeground(Color.WHITE);
-		lblInfoDados.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblInfoDados.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		lblInfoDados.setBackground(Color.DARK_GRAY);
-		lblInfoDados.setBounds(0, 0, 450, 24);
-		pnlDados.add(lblInfoDados);
-		
-		//Informar o ID
-		JLabel lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblUsuario.setBounds(10, 40, 63, 24);
-		pnlDados.add(lblUsuario);
-		
-		
-		JLabel lblInformaUsuario = new JLabel();
-		lblInformaUsuario.setText(Estatica.novoUsuario);
-		lblInformaUsuario.setBounds(211, 40, 209, 24);
-		pnlDados.add(lblInformaUsuario);
-
-
-		
-		//Informar a senha
-		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSenha.setBounds(10, 67, 63, 24);
-		pnlDados.add(lblSenha);
-		
-		JLabel lblInformaSenha = new JLabel();
-		lblInformaSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaSenha.setBounds(198, 67, 209, 24);
-		pnlDados.add(lblInformaSenha);
-		
-		//Informar a chave
-		JLabel lblChave = new JLabel("Chave de recupera\u00E7\u00E3o:");
-		lblChave.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblChave.setBounds(10, 95, 161, 24);
-		pnlDados.add(lblChave);
-		
-		JLabel lblInformaChave = new JLabel();
-		lblInformaChave.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaChave.setBounds(198, 95, 209, 24);
-		pnlDados.add(lblInformaChave);
-		
-		//Avisar sobre a chave
-		JTextArea txtAvisoChave = new JTextArea();
-		txtAvisoChave.setWrapStyleWord(true);
-		txtAvisoChave.setText("Guarde a sua chave de recupera\u00E7\u00E3o em algum local seguro, pois caso esque\u00E7a a senha, precisara desta chave para recupera-la");
-		txtAvisoChave.setLineWrap(true);
-		txtAvisoChave.setForeground(Color.RED);
-		txtAvisoChave.setFont(new Font("Calibri", Font.BOLD, 14));
-		txtAvisoChave.setEditable(false);
-		txtAvisoChave.setBorder(new LineBorder(UIManager.getColor("CheckBox.shadow")));
-		txtAvisoChave.setBounds(10, 122, 430, 35);
-		pnlDados.add(txtAvisoChave);
-		
-		//Separador aviso
-		JSeparator spdAvisoChave = new JSeparator();
-		spdAvisoChave.setBounds(10, 173, 430, 2);
-		pnlDados.add(spdAvisoChave);
-		
-		//Informar o nome
-		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNome.setBounds(10, 186, 48, 24);
-		pnlDados.add(lblNome);
-		
-		JLabel lblInformaNome = new JLabel();
-		lblInformaNome.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaNome.setBounds(211, 186, 209, 24);
-		pnlDados.add(lblInformaNome);
-		
-		//Informar o sobrenome
-		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSobrenome.setBounds(10, 215, 86, 24);
-		pnlDados.add(lblSobrenome);
-		
-		JLabel lblInformaSobrenome = new JLabel();
-		lblInformaSobrenome.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaSobrenome.setBounds(211, 215, 209, 24);
-		pnlDados.add(lblInformaSobrenome);
-		
-		//Informar a data de nascimento
-		JLabel lblDatanascimento = new JLabel("Data de Nascimento:");
-		lblDatanascimento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblDatanascimento.setBounds(10, 248, 148, 24);
-		pnlDados.add(lblDatanascimento);
-		
-		JLabel lblInformaDatanascimento = new JLabel();
-		lblInformaDatanascimento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaDatanascimento.setBounds(211, 248, 209, 24);
-		pnlDados.add(lblInformaDatanascimento);
-		
-		//Informar o email
-		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblEmail.setBounds(10, 280, 148, 24);
-		pnlDados.add(lblEmail);
-		
-		JLabel lblInformaEmail = new JLabel();
-		lblInformaEmail.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaEmail.setBounds(211, 280, 209, 24);
-		pnlDados.add(lblInformaEmail);
-		
-		//Botão [Voltar para tela de login]
-		JButton btnLogin = new JButton("Voltar Login");
-		btnLogin.setForeground(Color.WHITE);
-		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnLogin.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnLogin.setBackground(Color.DARK_GRAY);
-		btnLogin.setBounds(166, 340, 120, 35);
-		pnlDados.add(btnLogin);
-
-		
-		
-		//Ação do botão [Clique / Voltar login]
-		btnLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				IG_Login IGL = new IG_Login();
-				IGL.setVisible(true);
-			}
-		});
-		
-
 		
 
 		

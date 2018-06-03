@@ -24,14 +24,16 @@ import java.awt.Insets;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
-public class IG_Principal_ADM extends JFrame {
+public class IG_ADM_Principal extends JFrame {
 
 	private JPanel pnlADM;
 
 //JFrame - Janela do ADM ===========================================================================================================
 		
-	public IG_Principal_ADM() {
+	public IG_ADM_Principal() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 668, 500);
@@ -55,24 +57,6 @@ public class IG_Principal_ADM extends JFrame {
 		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_ADM.jpg"));
 		lblBackground.setBounds(0, 0, 668, 118);
 		pnlADM.add(lblBackground);
-	
-//Componentes ====================================================================================================================================
-		
-		
-		JPanel pnlPrincipal = new JPanel();
-		pnlPrincipal.setBackground(new Color(255, 255, 240));
-		pnlPrincipal.setBounds(0, 149, 668, 351);
-		pnlADM.add(pnlPrincipal);
-		pnlPrincipal.setLayout(new CardLayout(0, 0));
-		
-		JPanel pnlPadrao = new JPanel();
-		pnlPrincipal.add(pnlPadrao, "Padrao");
-		
-		JPanel pnlEstatisticas = new JPanel();
-		pnlPrincipal.add(pnlEstatisticas, "Estatisticas");
-		pnlEstatisticas.setBackground(new Color(0, 0, 0));
-		pnlEstatisticas.setForeground(new Color(0, 0, 0));
-		pnlEstatisticas.setLayout(null);
 		
 		
 		//Botão [Estatisticas
@@ -85,14 +69,19 @@ public class IG_Principal_ADM extends JFrame {
 		btnEstatisticas.setBorder(null);
 		btnEstatisticas.setBackground(Color.DARK_GRAY);
 		
-		btnEstatisticas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		//Ação do botão [Clique / Mostrar estatisticas]
+		btnEstatisticas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
 				
-				CardLayout estatisticas = (CardLayout) pnlPrincipal.getLayout();
-				estatisticas.show(pnlPrincipal, "Estatisticas");
+				IG_ADM_Estatisticas IGAE = new IG_ADM_Estatisticas();
+				IGAE.setVisible(true);
+				
 			}
 		});
 		
+
 		
 		
 		//Botão [Sair]
@@ -103,6 +92,15 @@ public class IG_Principal_ADM extends JFrame {
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSair.setBorder(null);
 		btnSair.setBackground(Color.DARK_GRAY);
+		
+		JButton btnAlterarDados = new JButton("Alterar dados");
+		btnAlterarDados.setMaximumSize(new Dimension(150, 200));
+		btnAlterarDados.setForeground(Color.WHITE);
+		btnAlterarDados.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAlterarDados.setBorder(null);
+		btnAlterarDados.setBackground(Color.DARK_GRAY);
+		btnAlterarDados.setBounds(100, 119, 99, 30);
+		pnlADM.add(btnAlterarDados);
 		
 		//Ação do botão [Sair]
 		btnSair.addMouseListener(new MouseAdapter() {
@@ -130,14 +128,7 @@ public class IG_Principal_ADM extends JFrame {
 			}
 			
 		});
-		
-		btnEstatisticas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			
-				
-			}
-		});
+	
 		
 		
 	}

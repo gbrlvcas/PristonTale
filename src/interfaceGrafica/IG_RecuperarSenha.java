@@ -251,7 +251,7 @@ public class IG_RecuperarSenha extends JFrame {
 					if(Estatica.erroRecuperar == 0) {
 						dispose();
 						
-						IG_Dados_RecuperarSenha IGDR = new IG_Dados_RecuperarSenha();
+						IG_RecuperarSenha_Listar IGDR = new IG_RecuperarSenha_Listar();
 						IGDR.setVisible(true);
 					}
 						

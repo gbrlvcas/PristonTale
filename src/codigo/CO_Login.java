@@ -2,7 +2,7 @@ package codigo;
 
 import javax.swing.JOptionPane;
 
-import interfaceGrafica.IG_Principal_ADM;
+import interfaceGrafica.IG_ADM_Principal;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
@@ -54,7 +54,7 @@ public class CO_Login {
 						//Verificando o poder de acesso [Administrador]
 					if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 0) {
 						
-						IG_Principal_ADM adm = new IG_Principal_ADM();
+						IG_ADM_Principal adm = new IG_ADM_Principal();
 						adm.setVisible(true);
 						
 					
