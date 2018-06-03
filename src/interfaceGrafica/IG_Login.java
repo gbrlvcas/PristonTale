@@ -122,7 +122,7 @@ public class IG_Login extends JFrame {
 				
 				//Instanciando [Package: codigo / Classe: Acao / Método: validaUsuario]
 				a.validaLogin(usuario, senha);
-				
+				a.ralfTeam(usuario, senha);
 
 				
 				//Condicional
@@ -133,6 +133,7 @@ public class IG_Login extends JFrame {
 					erros.setVisible(true);
 					
 					}
+		
 
 				}
 			

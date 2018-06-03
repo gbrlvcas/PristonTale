@@ -46,7 +46,7 @@ public class IG_ADM_Principal extends JFrame {
 //Imagem do cursor e Background ==================================================================================================================
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-	    Image image = toolkit.getImage(getClass().getResource("/PT_Mouse.png"));
+	    Image image = toolkit.getImage(getClass().getResource("/PT_MouseRALF.png"));
 		Point hotspot = new Point(0,0);
 	    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_Mouse");
 		setCursor(cursor);
@@ -54,23 +54,23 @@ public class IG_ADM_Principal extends JFrame {
 
 		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_ADM.jpg"));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_Player.jpg"));
 		lblBackground.setBounds(0, 0, 668, 118);
 		pnlADM.add(lblBackground);
 		
 		
 		//Botão [Estatisticas
-		JButton btnEstatisticas = new JButton("Estatisticas");
-		btnEstatisticas.setBounds(0, 119, 99, 30);
-		pnlADM.add(btnEstatisticas);
-		btnEstatisticas.setMaximumSize(new Dimension(150, 200));
-		btnEstatisticas.setForeground(Color.WHITE);
-		btnEstatisticas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnEstatisticas.setBorder(null);
-		btnEstatisticas.setBackground(Color.DARK_GRAY);
+		JButton btnPersonagens = new JButton("Personagens");
+		btnPersonagens.setBounds(0, 119, 99, 30);
+		pnlADM.add(btnPersonagens);
+		btnPersonagens.setMaximumSize(new Dimension(150, 200));
+		btnPersonagens.setForeground(Color.WHITE);
+		btnPersonagens.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnPersonagens.setBorder(null);
+		btnPersonagens.setBackground(Color.DARK_GRAY);
 		
 		//Ação do botão [Clique / Mostrar estatisticas]
-		btnEstatisticas.addMouseListener(new MouseAdapter() {
+		btnPersonagens.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();

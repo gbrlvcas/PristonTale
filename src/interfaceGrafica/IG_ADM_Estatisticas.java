@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -67,18 +68,47 @@ public class IG_ADM_Estatisticas extends JFrame {
 		CO_ADM COA = new CO_ADM();
 		
 		//Tabela de estatisticas
-		JScrollPane scrEstatisticas = new JScrollPane(tabEstatisticas);
-		scrEstatisticas.setBounds(10, 470, 658, -352);
-		pnlADM.add(scrEstatisticas);
-		
 		tabEstatisticas = new JTable(COA.ListarEstatisticas());
+		
+		//Barra de rolagem da tabela de estatisticas
+		JScrollPane scrEstatisticas = new JScrollPane();
+		scrEstatisticas.setBounds(0, 118, 668, 352);
+		pnlADM.add(scrEstatisticas);
 		scrEstatisticas.setViewportView(tabEstatisticas);
+		
+		//Travar edição da tabela
+		tabEstatisticas.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+	
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub	
+			}
+		});
 		
 		
 		
 		//Botão [Sair]
 		JButton btnSair = new JButton("SAIR");
-		btnSair.setBounds(569, 470, 99, 30);
+		btnSair.setBounds(0, 470, 668, 30);
 		pnlADM.add(btnSair);
 		btnSair.setForeground(Color.WHITE);
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));

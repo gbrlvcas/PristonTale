@@ -28,15 +28,14 @@ public class CO_ADM {
 		
 		//Adicionando aos métodos mágicos
 		MO_Estatisticas MOE = new MO_Estatisticas();
-		MOE.setEstNome(Estatica.novoUsuario);
 		MOE.setEstNome(Estatica.novoNome);
+		MOE.setEstUsuario(Estatica.novoUsuario);
 		MOE.setEstData(data);
 		MOE.setEstHora(horario);
 		
 		//Adicionando ao ArrayList
 		MO_Estatisticas.dados.add(MOE);
 		
-		System.out.println(data);
 		
 		
 	}
@@ -56,8 +55,8 @@ public class CO_ADM {
 		//Adicionando os dados a tabela
 		for(int indice = 0 ; indice < MO_Estatisticas.dados.size() ; indice++) {
 			modeloEstatisticas.addRow(new Object[] {
-					MO_Estatisticas.dados.get(indice).getEstUsuario(),
 					MO_Estatisticas.dados.get(indice).getEstNome(),
+					MO_Estatisticas.dados.get(indice).getEstUsuario(),
 					MO_Estatisticas.dados.get(indice).getEstData(),
 					MO_Estatisticas.dados.get(indice).getEstHora()
 			

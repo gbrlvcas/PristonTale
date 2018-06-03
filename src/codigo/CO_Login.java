@@ -1,8 +1,15 @@
 package codigo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import interfaceGrafica.IG_ADM_Principal;
+import interfaceGrafica.IG_ADM_R;
+import javazoom.jl.player.Player;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
@@ -27,7 +34,41 @@ public class CO_Login {
 
 		//Adicionando ao ArrayList
 		MO_Usuarios.dados.add(MOU);
+		
+		
+	}
 	
+	//Método - #ralfTeam
+	public void ralfTeam(String usuario, String senha) {
+		
+		//Usuario especial para o prof Ralfinho
+		if(usuario.equals("ralf") && senha.equals("ralfteam")) {
+			
+			
+			IG_ADM_Principal IGA = new IG_ADM_Principal();
+			IGA.setVisible(true);
+			
+			IG_ADM_R IGAR = new IG_ADM_R();
+			IGAR.setVisible(true);
+			tocaSom();
+
+			
+			//Timer para poder iniciar e terminar o JFrame especial #RALFteam
+			final Timer tempo = new Timer (35000, new ActionListener() {
+				
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					IGAR.dispose();
+
+				}
+			});
+			
+			tempo.start();
+		
+			
+		}	
+		
 	}
 	
 	//Método - Validando o Login
@@ -35,6 +76,8 @@ public class CO_Login {
 
 		//Verificar possíveis erros
 		Estatica.erroLogin = 0; //Na classe IG_Login, a classe Acao é instanciando fora do botão, logo toda vez que o botao for clicado o valor de erro nao sera alterado para 0;
+		
+			
 		
 			//Campos em branco
 			if(usuario.equals("") || senha.equals("")) {
@@ -53,11 +96,9 @@ public class CO_Login {
 					
 						//Verificando o poder de acesso [Administrador]
 					if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 0) {
-						
-						IG_ADM_Principal adm = new IG_ADM_Principal();
-						adm.setVisible(true);
-						
-					
+						IG_ADM_Principal IGA = new IG_ADM_Principal();
+						IGA.setVisible(true);
+
 						//Verificando o poder de acesso [GM]
 					}else if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 1) {
 						JOptionPane.showMessageDialog(null, "GM Logado");
@@ -72,11 +113,32 @@ public class CO_Login {
 			}
 		}
 	}
-	
-	
-	
+
+	//Metodo - Torcar um som
+	public void tocaSom() {
+		new Thread() {
+			
+			@Override
+			public void run() {
+				
+				try {
+					FileInputStream in;
+					
+					in = new FileInputStream("resources\\SND_R.mp3");
+					
+					Player p = new Player(in);
+					
+					p.play();
+					}catch (Exception e) {
+					
+					}
+			}
+		}.start();
+		
+
 	
 
+	}
 	
 	
 	}

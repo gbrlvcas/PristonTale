@@ -86,7 +86,7 @@ public class IG_Cadastro_Listar extends JFrame {
 						
 		JLabel lblInformaUsuario = new JLabel(Estatica.novoUsuario);
 		lblInformaUsuario.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblInformaUsuario.setBounds(211, 167, 209, 24);
+		lblInformaUsuario.setBounds(198, 167, 209, 24);
 		pnlPrincipal.add(lblInformaUsuario);
 		lblInformaUsuario.setText(Estatica.novoUsuario);
 						
