@@ -214,8 +214,8 @@ public class IG_Login extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				
 				//Instanciando [Classe: IG_Cadastrar]
-				IG_Usuario IGU = new IG_Usuario();
-				IGU.setVisible(true);
+				IG_Cadastro IGC = new IG_Cadastro();
+				IGC.setVisible(true);
 				dispose();
 			
 			}

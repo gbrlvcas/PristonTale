@@ -1,10 +1,9 @@
 package codigo;
 
+
 import java.util.Random;
 
-import interfaceGrafica.IG_Dados_Cadastro;
 import interfaceGrafica.IG_Erros;
-import interfaceGrafica.IG_Pessoal;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
@@ -73,13 +72,6 @@ public class CO_Cadastro {
 			IE.setVisible(true);
 		}
 		
-		//0 - Indo para o próximo JFrame
-		if(Estatica.erroUsuario == 0) {
-			
-			//Abrindo o JFrame [Pessoal]
-			IG_Pessoal IGP = new IG_Pessoal();
-			IGP.setVisible(true);
-		}
 		
 	}
 	
@@ -120,9 +112,7 @@ public class CO_Cadastro {
 		if(Estatica.erroPessoal == 0) {
 			chaveRecuperacao();
 			cadastrar();
-			
-			IG_Dados_Cadastro IGD = new IG_Dados_Cadastro();
-			IGD.setVisible(true);
+
 		}
 	}
 	
