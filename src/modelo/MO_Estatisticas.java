@@ -8,6 +8,7 @@ public class MO_Estatisticas {
 	private String estNome;
 	private String estData;
 	private String estHora;
+	private String ultimoLogin;
 	private int estChar;
 	
 	
@@ -34,6 +35,12 @@ public class MO_Estatisticas {
 	}
 	public void setEstHora(String estHora) {
 		this.estHora = estHora;
+	}
+	public String getUltimoLogin() {
+		return ultimoLogin;
+	}
+	public void setUltimoLogin(String ultimoLogin) {
+		this.ultimoLogin = ultimoLogin;
 	}
 	public int getEstChar() {
 		return estChar;

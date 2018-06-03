@@ -32,6 +32,7 @@ import javax.swing.text.MaskFormatter;
 import codigo.CO_ADM;
 import codigo.CO_Cadastro;
 import modelo.Estatica;
+import javax.swing.UIManager;
 
 
 public class IG_Cadastro extends JFrame {
@@ -50,7 +51,7 @@ public class IG_Cadastro extends JFrame {
 	public IG_Cadastro() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 551);
+		setBounds(100, 100, 450, 515);
 		pnlPrincipal = new JPanel();
 		pnlPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pnlPrincipal);
@@ -276,6 +277,17 @@ public class IG_Cadastro extends JFrame {
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSair.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnSair.setBackground(Color.DARK_GRAY);
+		
+		JTextArea txtAvisoConta = new JTextArea();
+		txtAvisoConta.setWrapStyleWord(true);
+		txtAvisoConta.setText("Lembre-se de guardar bem seus dados, qualquer problema relacionado a cadastro, entre em contato conosco");
+		txtAvisoConta.setLineWrap(true);
+		txtAvisoConta.setForeground(Color.RED);
+		txtAvisoConta.setFont(new Font("Calibri", Font.BOLD, 14));
+		txtAvisoConta.setEditable(false);
+		txtAvisoConta.setBorder(new LineBorder(UIManager.getColor("CheckBox.shadow")));
+		txtAvisoConta.setBounds(10, 327, 430, 35);
+		pnlUsuario.add(txtAvisoConta);
 		
 		//Ação do botão [Sair]
 		btnSair.addMouseListener(new MouseAdapter() {

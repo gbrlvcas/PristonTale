@@ -59,7 +59,7 @@ public class IG_ADM_Estatisticas extends JFrame {
 
 		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_ADM.jpg"));
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_ADM.jpg")));
 		lblBackground.setBounds(0, 0, 668, 118);
 		pnlADM.add(lblBackground);
 		

@@ -48,13 +48,13 @@ public class IG_ADM_R extends JFrame {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 	    Image image = toolkit.getImage(getClass().getResource("/PT_MouseRALF.png"));
 		Point hotspot = new Point(0,0);
-	    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_Mouse");
+	    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_MouseRALF");
 		setCursor(cursor);
 		
 
 		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_R.gif"));
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_R.gif")));
 		lblBackground.setBounds(0, 0, 668, 500);
 		pnlADM.add(lblBackground);
 	

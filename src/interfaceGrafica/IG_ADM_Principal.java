@@ -46,7 +46,7 @@ public class IG_ADM_Principal extends JFrame {
 //Imagem do cursor e Background ==================================================================================================================
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-	    Image image = toolkit.getImage(getClass().getResource("/PT_MouseRALF.png"));
+	    Image image = toolkit.getImage(getClass().getResource("/PT_Mouse.png"));
 		Point hotspot = new Point(0,0);
 	    Cursor cursor = toolkit.createCustomCursor(image, hotspot, "PT_Mouse");
 		setCursor(cursor);
@@ -54,7 +54,7 @@ public class IG_ADM_Principal extends JFrame {
 
 		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_Player.jpg"));
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Player.jpg")));
 		lblBackground.setBounds(0, 0, 668, 118);
 		pnlADM.add(lblBackground);
 		
@@ -109,6 +109,10 @@ public class IG_ADM_Principal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
+				
+				//Instanciando [Classe: IG_Login]
+				IG_Login IGL = new IG_Login();
+				IGL.setVisible(true);
 			}
 			
 			//Função Botão [Passar por cima / Mudar cor]

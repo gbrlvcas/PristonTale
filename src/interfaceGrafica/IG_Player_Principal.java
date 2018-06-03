@@ -1,6 +1,6 @@
 package interfaceGrafica;
 
-import java.awt.CardLayout;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -15,17 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import java.awt.Component;
-import javax.swing.SwingConstants;
-import java.awt.Insets;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
+
 
 public class IG_Player_Principal extends JFrame {
 
@@ -54,29 +46,32 @@ public class IG_Player_Principal extends JFrame {
 
 		//Background
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\PristonTale\\resources\\BG_ADM.jpg"));
+		lblBackground.setIcon(new ImageIcon(getClass().getResource("/BG_Player.jpg")));
 		lblBackground.setBounds(0, 0, 668, 118);
 		pnlADM.add(lblBackground);
 		
 		
 		//Botão [Estatisticas
-		JButton btnEstatisticas = new JButton("Estatisticas");
-		btnEstatisticas.setBounds(0, 119, 99, 30);
-		pnlADM.add(btnEstatisticas);
-		btnEstatisticas.setMaximumSize(new Dimension(150, 200));
-		btnEstatisticas.setForeground(Color.WHITE);
-		btnEstatisticas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnEstatisticas.setBorder(null);
-		btnEstatisticas.setBackground(Color.DARK_GRAY);
-		
+		JButton btnPersonagem = new JButton("Personagem");
+		btnPersonagem.setBounds(0, 119, 99, 30);
+		pnlADM.add(btnPersonagem);
+		btnPersonagem.setMaximumSize(new Dimension(150, 200));
+		btnPersonagem.setForeground(Color.WHITE);
+		btnPersonagem.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnPersonagem.setBorder(null);
+		btnPersonagem.setBackground(Color.DARK_GRAY);
+
 		//Ação do botão [Clique / Mostrar estatisticas]
-		btnEstatisticas.addMouseListener(new MouseAdapter() {
+		btnPersonagem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
 				
-				IG_ADM_Estatisticas IGAE = new IG_ADM_Estatisticas();
-				IGAE.setVisible(true);
+			//Instanciando [Classe: IG_Player_Personagem]
+			IG_Player_Personagem IGPP = new IG_Player_Personagem();
+			IGPP.setVisible(true);
+				
+				
 				
 			}
 		});
@@ -109,6 +104,10 @@ public class IG_Player_Principal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
+				
+				//Instanciando [Classe: IG_Login]
+				IG_Login IGL = new IG_Login();
+				IGL.setVisible(true);
 			}
 			
 			//Função Botão [Passar por cima / Mudar cor]

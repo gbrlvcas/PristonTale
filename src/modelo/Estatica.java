@@ -12,6 +12,7 @@ public class Estatica {
 	//Variaveis para todas classes
 	public static String mensagemErro = "";
 	public static String confirmaSenha;
+	public static String usuarioLogado;
 	
 	//Variaveis [JFrame - Login]
 	public static int erroLogin = 0;
@@ -41,6 +42,9 @@ public class Estatica {
 	public static String verificaUsuario;
 	public static String verificaChave;
 	public static String alterarSenha;
+	
+	//Variaveis [JFrame - Player - Personagem]
+	public static String msgBoasVindas;
 	
 	
 

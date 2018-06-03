@@ -24,6 +24,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import codigo.CO_Login;
+import codigo.CO_Player;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
 
@@ -59,11 +60,11 @@ public class IG_Login extends JFrame {
 //Componentes =======================================================================================================================
 		
 		//Instanciando [Classe: Acao]
-		CO_Login a = new CO_Login();
+		CO_Login COL = new CO_Login();
 			
 			//Instanciando [Classe: Acao / Método: usuarioADM]
 			if(MO_Usuarios.dados.isEmpty()) {
-				a.usuarioADM();
+				COL.usuarioADM();
 		
 		}
 			
@@ -118,13 +119,12 @@ public class IG_Login extends JFrame {
 				
 				//Pegar os dados digitados
 				String usuario = txtUsuario.getText().toString();
+				Estatica.usuarioLogado = usuario;
 				String senha = new String(txtSenha.getPassword());
 				
-				//Instanciando [Package: codigo / Classe: Acao / Método: validaUsuario]
-				a.validaLogin(usuario, senha);
-				a.ralfTeam(usuario, senha);
-
-				
+				//Instanciando [Métodos que usam os dados para logar]
+				COL.validaLogin(usuario, senha);
+				COL.ralfTeam(usuario, senha);
 				//Condicional
 				if(Estatica.erroLogin == 1) {
 					
@@ -134,6 +134,12 @@ public class IG_Login extends JFrame {
 					
 					}
 		
+				if(Estatica.erroLogin == 0) {
+					
+					//Fechando a tela de login
+					dispose();
+	
+				}
 
 				}
 			

@@ -9,8 +9,10 @@ import javax.swing.Timer;
 
 import interfaceGrafica.IG_ADM_Principal;
 import interfaceGrafica.IG_ADM_R;
+import interfaceGrafica.IG_Player_Principal;
 import javazoom.jl.player.Player;
 import modelo.Estatica;
+import modelo.MO_Estatisticas;
 import modelo.MO_Usuarios;
 
 public class CO_Login {
@@ -96,8 +98,12 @@ public class CO_Login {
 					
 						//Verificando o poder de acesso [Administrador]
 					if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 0) {
+						
+						//Liberando acesso ao painel do ADM
 						IG_ADM_Principal IGA = new IG_ADM_Principal();
 						IGA.setVisible(true);
+						
+						
 
 						//Verificando o poder de acesso [GM]
 					}else if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 1) {
@@ -105,8 +111,14 @@ public class CO_Login {
 						
 						//Verificando o poder de acesso [Player]
 					}else if(MO_Usuarios.dados.get(validador).getPoderAcesso() == 2) {
-						JOptionPane.showMessageDialog(null, "Player Logado");
 						
+						//Liberando acesso ao painel do Player
+						IG_Player_Principal IGPP = new IG_Player_Principal();
+						IGPP.setVisible(true);
+						
+						//Gravar a ultima vez que o jogador entrou
+						CO_ADM COA = new CO_ADM();
+						COA.ultimoLogin(usuario);
 					}
 					
 				}
