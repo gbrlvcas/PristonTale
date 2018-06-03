@@ -16,18 +16,22 @@ public class Estatica {
 	//Variaveis [JFrame - Login]
 	public static int erroLogin = 0;
 	
-	//Variaveis [JFrame - Cadastro Usuario]
+	//Variaveis [JFrame - Cadastro - Usuario]
 	public static int erroUsuario = 0;
 	public static String novoUsuario;
 	public static String novaSenha;
 
 
-	//Variaveis [JFrame - Cadastro pessoal]
+	//Variaveis [JFrame - Cadastro - Pessoal]
 	public static int erroPessoal = 0;
 	public static String novoNome;
 	public static String novoSobrenome;
 	public static String novaDatanascimento;
 	public static String novoEmail;
+	
+	//Variaveis [JFrame - Cadastro - Dados]
+	public static int mostrarDados = 0;
+
 	
 	//Variavel [Chave recuperação]
 	public static String chaveRecuperacao;
@@ -37,6 +41,7 @@ public class Estatica {
 	public static String verificaUsuario;
 	public static String verificaChave;
 	public static String alterarSenha;
+	
 	
 
 	

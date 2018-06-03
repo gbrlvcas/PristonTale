@@ -3,6 +3,7 @@ package codigo;
 
 import java.util.Random;
 
+import interfaceGrafica.IG_Cadastro;
 import interfaceGrafica.IG_Erros;
 import modelo.Estatica;
 import modelo.MO_Usuarios;
@@ -136,8 +137,19 @@ public class CO_Cadastro {
 		
 	}
 	
+	//Método - Listar dados
+	public void listarDados() {
+		
+	IG_Cadastro IGC = new IG_Cadastro();
+	IGC.validate();
+	IGC.repaint();
+		
+	}
+	
 	//Método para cadastrar [Está sendo usado na variavel anterior]
 	public void cadastrar() {
+		
+
 		
 		//Instanciando [Package: modelo / Classe: MO_Usuarios]
 		MO_Usuarios MOU = new MO_Usuarios();
@@ -158,7 +170,7 @@ public class CO_Cadastro {
 		  //Adicionar ao vetor
 		  MO_Usuarios.dados.add(MOU);
 
-	}
+	}	
 	
 	}
 

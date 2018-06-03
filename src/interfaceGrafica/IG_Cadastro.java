@@ -32,7 +32,7 @@ import javax.swing.text.MaskFormatter;
 
 import codigo.CO_Cadastro;
 import modelo.Estatica;
-import modelo.MO_Usuarios;
+
 
 public class IG_Cadastro extends JFrame {
 
@@ -43,6 +43,7 @@ public class IG_Cadastro extends JFrame {
 	private JTextField txtNovoNome;
 	private JTextField txtNovoSobrenome;
 	private JTextField txtNovoEmail;
+	
 	
 	//JFrame - Janela do cadastro =========================================================================================================
 	
@@ -487,14 +488,19 @@ public class IG_Cadastro extends JFrame {
 						
 				//Instanciando [Package:Codigo / Classe:Usuarios / Método: ]
 				COU.verificaPessoal(termoSelecionado);
-						
+
 					//Fechar componente caso não haja erro no cadastro
 						//Direcionar para o próximo componente
 					if(Estatica.erroPessoal == 0) {
-						
+					dispose();
+					IG_Cadastro IGC = new IG_Cadastro();
+					IGC.setVisible(true);
+					
 					CardLayout dados = (CardLayout) pnlCadastro.getLayout();
 					dados.show(pnlCadastro, "Painel Dados");
+					
 
+					
 					}
 					
 				}
@@ -515,9 +521,10 @@ public class IG_Cadastro extends JFrame {
 						
 				}
 			});
-		
+
 //Componentes [Painel Dados] ========================================================================================================================================
 	
+
 		//Painel Dados [CardLayout]
 		JPanel pnlDados = new JPanel();
 		pnlCadastro.add(pnlDados, "Painel Dados");
@@ -540,9 +547,13 @@ public class IG_Cadastro extends JFrame {
 		lblUsuario.setBounds(10, 40, 63, 24);
 		pnlDados.add(lblUsuario);
 		
+		
 		JLabel lblInformaUsuario = new JLabel();
+		lblInformaUsuario.setText(Estatica.novoUsuario);
 		lblInformaUsuario.setBounds(211, 40, 209, 24);
 		pnlDados.add(lblInformaUsuario);
+
+
 		
 		//Informar a senha
 		JLabel lblSenha = new JLabel("Senha:");
@@ -550,7 +561,7 @@ public class IG_Cadastro extends JFrame {
 		lblSenha.setBounds(10, 67, 63, 24);
 		pnlDados.add(lblSenha);
 		
-		JLabel lblInformaSenha = new JLabel(Estatica.novaSenha);
+		JLabel lblInformaSenha = new JLabel();
 		lblInformaSenha.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblInformaSenha.setBounds(198, 67, 209, 24);
 		pnlDados.add(lblInformaSenha);
@@ -561,7 +572,7 @@ public class IG_Cadastro extends JFrame {
 		lblChave.setBounds(10, 95, 161, 24);
 		pnlDados.add(lblChave);
 		
-		JLabel lblInformaChave = new JLabel(Estatica.chaveRecuperacao);
+		JLabel lblInformaChave = new JLabel();
 		lblInformaChave.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblInformaChave.setBounds(198, 95, 209, 24);
 		pnlDados.add(lblInformaChave);
@@ -589,7 +600,7 @@ public class IG_Cadastro extends JFrame {
 		lblNome.setBounds(10, 186, 48, 24);
 		pnlDados.add(lblNome);
 		
-		JLabel lblInformaNome = new JLabel(Estatica.novoNome);
+		JLabel lblInformaNome = new JLabel();
 		lblInformaNome.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblInformaNome.setBounds(211, 186, 209, 24);
 		pnlDados.add(lblInformaNome);
@@ -600,7 +611,7 @@ public class IG_Cadastro extends JFrame {
 		lblSobrenome.setBounds(10, 215, 86, 24);
 		pnlDados.add(lblSobrenome);
 		
-		JLabel lblInformaSobrenome = new JLabel(Estatica.novoSobrenome);
+		JLabel lblInformaSobrenome = new JLabel();
 		lblInformaSobrenome.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblInformaSobrenome.setBounds(211, 215, 209, 24);
 		pnlDados.add(lblInformaSobrenome);
@@ -611,7 +622,7 @@ public class IG_Cadastro extends JFrame {
 		lblDatanascimento.setBounds(10, 248, 148, 24);
 		pnlDados.add(lblDatanascimento);
 		
-		JLabel lblInformaDatanascimento = new JLabel(Estatica.novaDatanascimento);
+		JLabel lblInformaDatanascimento = new JLabel();
 		lblInformaDatanascimento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblInformaDatanascimento.setBounds(211, 248, 209, 24);
 		pnlDados.add(lblInformaDatanascimento);
@@ -622,7 +633,7 @@ public class IG_Cadastro extends JFrame {
 		lblEmail.setBounds(10, 280, 148, 24);
 		pnlDados.add(lblEmail);
 		
-		JLabel lblInformaEmail = new JLabel(Estatica.novoEmail);
+		JLabel lblInformaEmail = new JLabel();
 		lblInformaEmail.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblInformaEmail.setBounds(211, 280, 209, 24);
 		pnlDados.add(lblInformaEmail);
@@ -635,6 +646,8 @@ public class IG_Cadastro extends JFrame {
 		btnLogin.setBackground(Color.DARK_GRAY);
 		btnLogin.setBounds(166, 340, 120, 35);
 		pnlDados.add(btnLogin);
+
+		
 		
 		//Ação do botão [Clique / Voltar login]
 		btnLogin.addMouseListener(new MouseAdapter() {
@@ -647,7 +660,7 @@ public class IG_Cadastro extends JFrame {
 		});
 		
 
-
+		
 
 		
 	}
