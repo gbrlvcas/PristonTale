@@ -47,7 +47,7 @@ public class CO_RecuperarSenha {
 			
 		}
 		
-		//Erro 2 - As senha não coincidem
+		//Erro 2 - As senhas não coincidem
 		if(!Estatica.alterarSenha.equals(Estatica.confirmaSenha)) {
 			
 			Estatica.erroRecuperar = 2;

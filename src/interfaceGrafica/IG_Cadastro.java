@@ -143,7 +143,7 @@ public class IG_Cadastro extends JFrame {
 							//Chamando o método para verificar o ID
 							COU.verificaID(idDisponivel);
 						
-						//Condicional [Pegar o resultado o método acima e validar]
+						//Condicional [Pegar o resultado do método acima e validar]
 						if(COU.verificaID(idDisponivel) == true) {
 							
 							lblMostrarDisponibilidade.setIcon(new ImageIcon(getClass().getResource("/ICN_Positivo.png")));
