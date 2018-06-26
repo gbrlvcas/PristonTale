@@ -227,6 +227,25 @@ public class IG_Player_Personagem extends JFrame {
 						
 					}
 				});
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCadastrar.setForeground(Color.WHITE);
+		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnCadastrar.setBackground(Color.DARK_GRAY);
+		btnCadastrar.setBounds(21, 420, 146, 39);
+		pnlADM.add(btnCadastrar);
+		
+		//Botão [Cadastrar]
+		btnCadastrar.addActionListener(new ActionListener() {
+			
+			//Ação do botão [Clique / Cadastrar]
+			public void actionPerformed(ActionEvent e) {
+				
+				Estatica.nomeChar = txtNickname.getText();
+				Estatica.classeChar = comboClasses.getSelectedItem().toString();
+			}
+		});
 
 				
 		//Botão [Sair]

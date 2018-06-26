@@ -38,8 +38,7 @@ public class IG_Erros extends JFrame {
 		
 //Componentes =======================================================================================================================
 		
-		//Instanciando [Pacakge: Código / Classe: Ação]
-		Estatica EST = new Estatica();
+
 		
 		//Mensagem cabeçalho
 		JLabel lblOcorreuAlgumErro = new JLabel("Ocorreu algum erro");
@@ -52,7 +51,7 @@ public class IG_Erros extends JFrame {
 		contentPane.add(lblOcorreuAlgumErro);
 		
 		//Mensagem de erro
-		JLabel lblErros = new JLabel(EST.mensagemErro);
+		JLabel lblErros = new JLabel(Estatica.mensagemErro);
 		lblErros.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblErros.setHorizontalAlignment(SwingConstants.CENTER);
 		lblErros.setBounds(15, 36, 310, 29);
