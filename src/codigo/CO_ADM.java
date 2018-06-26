@@ -9,7 +9,7 @@ import modelo.MO_Estatisticas;
 
 public class CO_ADM {
 
-	//Método - Ultimo login feito pelo usuario
+	//Método - Ultimo login feito pelo usuario/
 	public void ultimoLogin(String usuario) {
 		
 		//Dados temporais
