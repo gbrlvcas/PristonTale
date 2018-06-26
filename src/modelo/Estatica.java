@@ -45,6 +45,9 @@ public class Estatica {
 	
 	//Variaveis [JFrame - Player - Personagem]
 	public static String msgBoasVindas;
+	public static String nomeChar;
+	public static String classeChar;
+	
 	
 	
 
